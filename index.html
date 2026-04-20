@@ -493,6 +493,48 @@
         transform:translateY(90px);
       }
     }
+  .wheel-3d{
+  position:absolute;
+  top:120px; /* AJUSTA según tu imagen */
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  height:180px;
+  perspective:1000px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.wheel-3d{
+  transform-style:preserve-3d;
+  animation:spin 12s infinite linear;
+}
+
+.wheel-item{
+  position:absolute;
+  width:160px;
+  padding:12px;
+  text-align:center;
+  border-radius:20px;
+  background:linear-gradient(135deg,#f0b656,#d37b1f);
+  color:#fff;
+  font-weight:bold;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* POSICIONES EN CÍRCULO */
+.wheel-item:nth-child(1){ transform:rotateY(0deg) translateZ(200px); }
+.wheel-item:nth-child(2){ transform:rotateY(90deg) translateZ(200px); }
+.wheel-item:nth-child(3){ transform:rotateY(180deg) translateZ(200px); }
+.wheel-item:nth-child(4){ transform:rotateY(270deg) translateZ(200px); }
+
+/* ANIMACIÓN */
+@keyframes spin{
+  from{ transform:rotateY(0deg); }
+  to{ transform:rotateY(360deg); }
+}
+  
   </style>
 </head>
 <body>
@@ -527,7 +569,12 @@
             data-es="Tours y Aventuras Personalizadas en Las Vegas">
           Las Vegas Tours & Custom Adventures
         </h1>
-
+<div class="wheel-3d">
+  <div class="wheel-item">Tours</div>
+  <div class="wheel-item">Contact</div>
+  <div class="wheel-item">About</div>
+  <div class="wheel-item">Hotels</div>
+</div>
         <p data-en="Discover Las Vegas your way. We offer private and custom experiences including hotels, the Grand Canyon, Hoover Dam, desert views, scenic spots, and unforgettable adventures."
            data-es="Descubre Las Vegas a tu manera. Ofrecemos experiencias privadas y personalizadas incluyendo hoteles, el Gran Cañón, la Presa Hoover, vistas del desierto, lugares panorámicos y aventuras inolvidables.">
           Discover Las Vegas your way. We offer private and custom experiences including hotels, the Grand Canyon, Hoover Dam, desert views, scenic spots, and unforgettable adventures.
