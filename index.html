@@ -402,14 +402,16 @@
       margin-top:-24px;
       backface-visibility:hidden;
     }
-
-    .wheel-item:nth-child(1){ transform:rotateY(0deg) translateZ(170px); }
-    .wheel-item:nth-child(2){ transform:rotateY(90deg) translateZ(170px); }
-    .wheel-item:nth-child(3){ transform:rotateY(180deg) translateZ(170px); }
-    .wheel-item:nth-child(4){ transform:rotateY(270deg) translateZ(170px); }
+.wheel-item:nth-child(2){ transform:rotateY(60deg) translateZ(170px); }
+.wheel-item:nth-child(3){ transform:rotateY(120deg) translateZ(170px); }
+.wheel-item:nth-child(4){ transform:rotateY(180deg) translateZ(170px); }
+.wheel-item:nth-child(5){ transform:rotateY(240deg) translateZ(170px); }
+.wheel-item:nth-child(6){ transform:rotateY(300deg) translateZ(170px); }
+.wheel-item:nth-child(1){ transform:rotateY(0deg) translateZ(170px); }    
 
     @keyframes spin{
       from{ transform:rotateY(0deg); }
+
       to{ transform:rotateY(360deg); }
     }
 
@@ -546,11 +548,18 @@
     <div class="hero">
       <div class="hero-content">
         <div class="wheel-3d">
-          <div class="wheel-track">
-            <div class="wheel-item">Tours</div>
-            <div class="wheel-item">Contact</div>
-            <div class="wheel-item">About</div>
-            <div class="wheel-item">Hotels</div>
+        <div class="wheel-track">
+  <div class="wheel-item">Grand Canyon</div>
+  <div class="wheel-item">Horseshoe Bend</div>
+  <div class="wheel-item">Hoover Dam</div>
+  <div class="wheel-item">Skyline</div>
+  <div class="wheel-item">Hotels</div>
+  <div class="wheel-item">Custom Tours</div>
+</div>  
+            
+            
+            
+            
           </div>
         </div>
 
