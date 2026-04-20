@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Canyon Tour | Milemundo</title>
 
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial;
+  background:#3f4a2c;
+  color:#f5f1e8;
+  line-height:1.6;
+}
+
+/* BOTÓN REGRESAR */
+.back-arrow{
+  position:fixed;
+  top:15px;
+  left:15px;
+  width:45px;
+  height:45px;
+  background:linear-gradient(135deg,#3a2718,#55643a);
+  color:#fff;
+  font-size:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  z-index:9999;
+}
+
+/* BOTÓN IDIOMA */
+.lang-switch{
+  position:fixed;
+  top:15px;
+  right:15px;
+  display:flex;
+  gap:8px;
+  z-index:9999;
+}
+
+.lang-btn{
+  background:#4f3522;
+  border:none;
+  color:#fff;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* HERO */
+header{
+  height:80vh;
+  background:
+  linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+  url('./gran canon.jpg') center/cover no-repeat;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:2.5rem;
+  font-weight:900;
+}
+
+.hero p{
+  margin-top:15px;
+  max-width:700px;
+}
+
+/* SECCIONES */
+section{
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:2rem;
+}
+
+/* INFO */
+.info{
+  background:linear-gradient(135deg,#3a2718,#55643a);
+  padding:25px;
+  border-radius:20px;
+}
+
+/* GALERÍA */
+.gallery{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  height:auto;
+  border-radius:15px;
+}
+
+/* SERVICIOS */
+.services{
+  background:linear-gradient(135deg,#3a2718,#55643a);
+  padding:25px;
+  border-radius:20px;
+}
+
+.services-list{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+
+.service-item{
+  background:#4f3522;
+  padding:15px;
+  border-radius:12px;
+}
+
+/* CONTACTO */
+.contact{
+  text-align:center;
+  background:linear-gradient(135deg,#3a2718,#55643a);
+  padding:30px;
+  border-radius:20px;
+}
+
+.contact a{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#4f3522;
+  border-radius:12px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#21170f;
+}
+
+/* RESPONSIVE */
+@media(min-width:768px){
+  .gallery{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .hero h1{
+    font-size:3.5rem;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-arrow">←</a>
+
+<div class="lang-switch">
+  <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+  <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+</div>
+
+<header>
+  <div class="hero">
+    <div>
+      <h1 data-en="Grand Canyon Experience"
+          data-es="Experiencia Gran Cañón">
+        Grand Canyon Experience
+      </h1>
+
+      <p data-en="Discover one of the most breathtaking natural wonders in the world with a personalized Milemundo experience."
+         data-es="Descubre una de las maravillas naturales más impresionantes del mundo con una experiencia personalizada de Milemundo.">
+        Discover one of the most breathtaking natural wonders in the world with a personalized Milemundo experience.
+      </p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2 data-en="About the Grand Canyon"
+      data-es="Sobre el Gran Cañón">
+    About the Grand Canyon
+  </h2>
+
+  <div class="info">
+    <p data-en="The Grand Canyon is one of the most iconic natural landmarks in the world, known for its massive scale, colorful rock formations, and unforgettable panoramic views."
+       data-es="El Gran Cañón es una de las maravillas naturales más icónicas del mundo, conocido por su enorme tamaño, formaciones rocosas coloridas y vistas panorámicas inolvidables.">
+    </p>
+
+    <p data-en="Located just a few hours from Las Vegas, it offers the perfect opportunity for a full-day adventure filled with scenic stops, photography, and unforgettable experiences."
+       data-es="Ubicado a pocas horas de Las Vegas, ofrece la oportunidad perfecta para una aventura de día completo con paradas panorámicas, fotografía y experiencias inolvidables.">
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2 data-en="Photo Gallery"
+      data-es="Galería de Fotos">
+    Photo Gallery
+  </h2>
+
+  <div class="gallery">
+    <img src="./canyon.png">
+    <img src="./canyon2.jpeg">
+    <img src="./canyon3.jpeg">
+    <img src="./canyon4.jpeg">
+    <img src="./canyon5.jpeg">
+    <img src="./canyon6.jpeg">
+  </div>
+</section>
+
+<section>
+  <h2 data-en="What Milemundo Offers"
+      data-es="Lo que ofrece Milemundo">
+    What Milemundo Offers
+  </h2>
+
+  <div class="services">
+
+    <p data-en="Milemundo creates fully personalized travel experiences so you can explore the Grand Canyon your way."
+       data-es="Milemundo crea experiencias de viaje completamente personalizadas para que explores el Gran Cañón a tu manera.">
+    </p>
+
+    <div class="services-list">
+      <div class="service-item" data-en="Private Custom Tours" data-es="Tours Privados Personalizados"></div>
+      <div class="service-item" data-en="Flexible Pick-Up & Drop-Off" data-es="Recogida y Regreso Flexible"></div>
+      <div class="service-item" data-en="Scenic Stops & Photo Locations" data-es="Paradas Panorámicas y Fotográficas"></div>
+      <div class="service-item" data-en="Custom Routes" data-es="Rutas Personalizadas"></div>
+      <div class="service-item" data-en="Group & Couple Experiences" data-es="Experiencias para Grupos y Parejas"></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 data-en="Contact & Booking"
+      data-es="Contacto y Reservas">
+    Contact & Booking
+  </h2>
+
+  <div class="contact">
+    <p data-en="Ready to experience the Grand Canyon?"
+       data-es="¿Listo para vivir la experiencia del Gran Cañón?"></p>
+
+    <p>Phone / WhatsApp: +1 (702) 665-9598</p>
+    <p>Email: tours@milemundo.com</p>
+
+    <a href="mailto:tours@milemundo.com"
+       data-en="Send Email"
+       data-es="Enviar Correo">
+      Send Email
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p data-en="© 2026 Milemundo. All rights reserved."
+     data-es="© 2026 Milemundo. Todos los derechos reservados."></p>
+</footer>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+</script>
+
+</body>
+</html>
