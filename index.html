@@ -1,1 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milemundo | Las Vegas Tours & Adventures</title>
+  <meta name="description" content="Private tours and adventures in Las Vegas, the Grand Canyon, Hoover Dam, hotels, desert experiences, and custom trips." />
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:#3f4a2c;
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    header{
+      background:
+        linear-gradient(rgba(52,38,24,0.70), rgba(52,38,24,0.70)),
+        url('https://milemundo.github.io/milemundo/milemundo-banner-v2.png') center center / cover no-repeat;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background-color:#3f4a2c;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 30px;
+      background:rgba(42,30,18,0.45);
+      backdrop-filter:blur(4px);
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:bold;
+      letter-spacing:2px;
+      color:#d8c3a5;
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:10px;
+    }
+
+    .lang-btn{
+      border:none;
+      background:#8a6a43;
+      color:#fff;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active{
+      background:#c29b6b;
+      color:#2d2115;
+    }
+
+    .hero{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:110px 20px 70px;
+    }
+
+    .hero-content{
+      max-width:900px;
+      background:rgba(34,24,15,0.38);
+      padding:40px 25px;
+      border-radius:18px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.3);
+      transform:translateY(90px);
+    }
+
+    .hero h1{
+      font-size:3rem;
+      margin-bottom:20px;
+      color:#f0dfc5;
+      line-height:1.2;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      max-width:760px;
+      margin:0 auto 30px;
+      color:#f8f4ed;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:10px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#8a6a43;
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      background:#a98355;
+    }
+
+    .btn-secondary{
+      background:transparent;
+      border:2px solid #d8c3a5;
+      color:#fff;
+    }
+
+    .btn-secondary:hover{
+      background:#d8c3a5;
+      color:#2d2115;
+    }
+
+    section{
+      padding:70px 20px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+      width:100%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2.2rem;
+      margin-bottom:15px;
+      color:#f0dfc5;
+      line-height:1.2;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      max-width:800px;
+      margin:0 auto 45px;
+      color:#efe4d4;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#5a442d;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .card-content{
+      padding:22px;
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      color:#f5dfbf;
+      font-size:1.35rem;
+      line-height:1.3;
+    }
+
+    .card p{
+      color:#f7efe3;
+      margin-bottom:18px;
+      font-size:0.98rem;
+    }
+
+    .price{
+      color:#d8c3a5;
+      font-weight:bold;
+      font-size:1.05rem;
+    }
+
+    .about{
+      background:#4b3724;
+    }
+
+    .about-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:35px;
+      align-items:center;
+    }
+
+    .about-box img{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      object-fit:cover;
+      display:block;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .about-text h2{
+      font-size:2.2rem;
+      margin-bottom:20px;
+      color:#f2dfc3;
+      line-height:1.2;
+    }
+
+    .about-text p{
+      margin-bottom:18px;
+      color:#f8f1e5;
+      font-size:1.05rem;
+    }
+
+    .services-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:18px;
+      margin-top:25px;
+    }
+
+    .service-item{
+      background:#6d5336;
+      padding:18px;
+      border-radius:12px;
+      text-align:center;
+      font-weight:bold;
+      color:#fff5e8;
+    }
+
+    .contact{
+      background:#2f2419;
+    }
+
+    .contact-box{
+      max-width:850px;
+      margin:auto;
+      background:#5a442d;
+      padding:35px 25px;
+      border-radius:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+      text-align:center;
+    }
+
+    .contact-box p{
+      margin-bottom:15px;
+      color:#fff3e0;
+      font-size:1.05rem;
+    }
+
+    .contact-info{
+      font-size:1.1rem;
+      font-weight:bold;
+      color:#f0dfc5;
+      margin-top:15px;
+      word-break:break-word;
+    }
+
+    footer{
+      background:#21170f;
+      color:#d6c3a8;
+      text-align:center;
+      padding:22px 15px;
+      font-size:0.95rem;
+    }
+
+    @media (max-width: 900px){
+      .hero{
+        padding:100px 18px 60px;
+      }
+
+      .hero-content{
+        transform:translateY(70px);
+      }
+
+      .hero h1{
+        font-size:2.3rem;
+      }
+
+      .about-box{
+        grid-template-columns:1fr;
+      }
+
+      .about-box img{
+        min-height:300px;
+      }
+    }
+
+    @media (max-width: 768px){
+      header{
+        background:
+          linear-gradient(rgba(52,38,24,0.72), rgba(52,38,24,0.78)),
+          url('https://milemundo.github.io/milemundo/milemundo-banner-v2.png') center top / cover no-repeat;
+        min-height:100svh;
+        background-color:#3f4a2c;
+      }
+
+      .topbar{
+        padding:15px 18px;
+      }
+
+      .hero{
+        align-items:flex-end;
+        padding:40px 15px 55px;
+      }
+
+      .hero-content{
+        width:100%;
+        max-width:100%;
+        padding:24px 16px;
+        transform:translateY(0);
+        margin-top:90px;
+        background:rgba(34,24,15,0.34);
+      }
+
+      .hero h1{
+        font-size:1.9rem;
+        line-height:1.25;
+        margin-bottom:16px;
+      }
+
+      .hero p{
+        font-size:0.98rem;
+        line-height:1.7;
+        margin-bottom:22px;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .btn{
+        width:100%;
+        text-align:center;
+        padding:14px 18px;
+      }
+
+      section{
+        padding:55px 16px;
+      }
+
+      .section-title{
+        font-size:1.8rem;
+      }
+
+      .section-subtitle{
+        font-size:0.95rem;
+        margin-bottom:30px;
+      }
+
+      .card img{
+        height:180px;
+      }
+
+      .card-content{
+        padding:18px;
+      }
+
+      .card h3{
+        font-size:1.2rem;
+      }
+
+      .card p{
+        font-size:0.95rem;
+      }
+
+      .about-box{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      .about-box img{
+        min-height:250px;
+      }
+
+      .about-text h2{
+        font-size:1.8rem;
+      }
+
+      .about-text p{
+        font-size:0.98rem;
+      }
+
+      .services-list{
+        grid-template-columns:1fr;
+      }
+
+      .contact-box{
+        padding:28px 18px;
+      }
+
+      .contact-box p,
+      .contact-info{
+        font-size:0.98rem;
+      }
+    }
+
+    @media (max-width: 600px){
+      .topbar{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .logo{
+        font-size:1.6rem;
+        text-align:center;
+      }
+
+      .lang-switch{
+        width:100%;
+        justify-content:center;
+      }
+
+      .lang-btn{
+        padding:10px 14px;
+      }
+
+      .hero{
+        padding:30px 14px 45px;
+      }
+
+      .hero-content{
+        margin-top:85px;
+        padding:22px 14px;
+      }
+
+      .hero h1{
+        font-size:1.65rem;
+      }
+
+      .hero p{
+        font-size:0.92rem;
+      }
+
+      .section-title{
+        font-size:1.6rem;
+      }
+
+      .about-text h2{
+        font-size:1.6rem;
+      }
+
+      .card{
+        border-radius:16px;
+      }
+
+      .about-box img,
+      .hero-content,
+      .contact-box{
+        border-radius:16px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .hero{
+        padding:25px 12px 38px;
+      }
+
+      .hero-content{
+        margin-top:80px;
+      }
+
+      .hero h1{
+        font-size:1.48rem;
+      }
+
+      .hero p{
+        font-size:0.9rem;
+      }
+
+      .logo{
+        font-size:1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="logo">MILEMUNDO</div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+        <button class="lang-btn" onclick="setLanguage('es', this)">ES</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1 data-en="Las Vegas Tours & Custom Adventures"
+            data-es="Tours y Aventuras Personalizadas en Las Vegas">
+          Las Vegas Tours & Custom Adventures
+        </h1>
+
+        <p data-en="Discover Las Vegas your way. We offer private and custom experiences including hotels, the Grand Canyon, Hoover Dam, desert views, scenic spots, and unforgettable adventures."
+           data-es="Descubre Las Vegas a tu manera. Ofrecemos experiencias privadas y personalizadas incluyendo hoteles, el Gran Cañón, la Presa Hoover, vistas del desierto, lugares panorámicos y aventuras inolvidables.">
+          Discover Las Vegas your way. We offer private and custom experiences including hotels, the Grand Canyon, Hoover Dam, desert views, scenic spots, and unforgettable adventures.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#tours" class="btn btn-primary"
+             data-en="View Tours"
+             data-es="Ver Tours">View Tours</a>
+
+          <a href="#contact" class="btn btn-secondary"
+             data-en="Book Now"
+             data-es="Reservar Ahora">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="tours">
+    <div class="container">
+      <h2 class="section-title"
+          data-en="Popular Experiences"
+          data-es="Experiencias Populares">
+        Popular Experiences
+      </h2>
+
+      <p class="section-subtitle"
+         data-en="Choose one of our most requested experiences or contact us for a fully personalized adventure."
+         data-es="Elige una de nuestras experiencias más solicitadas o contáctanos para una aventura totalmente personalizada.">
+        Choose one of our most requested experiences or contact us for a fully personalized adventure.
+      </p>
+
+      <div class="about-box">
+        <img src="./gran canon.jpg" alt="Gran Canon">
+
+        <div class="about-text">
+          <h2 data-en="Grand Canyon Experience"
+              data-es="Experiencia Gran Cañón">
+            Grand Canyon Experience
+          </h2>
+
+          <p data-en="Discover one of the most breathtaking natural wonders in the world. Enjoy incredible panoramic views, desert landscapes, and unforgettable moments."
+             data-es="Descubre una de las maravillas naturales más impresionantes del mundo. Disfruta de vistas panorámicas increíbles, paisajes desérticos y momentos inolvidables.">
+            Discover one of the most breathtaking natural wonders in the world. Enjoy incredible panoramic views, desert landscapes, and unforgettable moments.
+          </p>
+
+          <p data-en="Perfect for full-day adventures, photography, and unique experiences outside Las Vegas."
+             data-es="Perfecto para aventuras de día completo, fotografía y experiencias únicas fuera de Las Vegas.">
+            Perfect for full-day adventures, photography, and unique experiences outside Las Vegas.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-box" style="margin-top:50px;">
+        <img src="./ChatGPT Image 19 abr 2026, 05_53_59 a.m..png" alt="Hoover Dam">
+
+        <div class="about-text">
+          <h2 data-en="Hoover Dam Tour"
+              data-es="Tour Presa Hoover">
+            Hoover Dam Tour
+          </h2>
+
+          <p data-en="Visit the famous Hoover Dam and enjoy a scenic route filled with history, engineering marvels, and beautiful views of the Colorado River."
+             data-es="Visita la famosa Presa Hoover y disfruta de una ruta escénica llena de historia, ingeniería impresionante y hermosas vistas del río Colorado.">
+            Visit the famous Hoover Dam and enjoy a scenic route filled with history, engineering marvels, and beautiful views of the Colorado River.
+          </p>
+
+          <p data-en="A relaxing and informative experience just minutes away from Las Vegas."
+             data-es="Una experiencia relajante e informativa a solo minutos de Las Vegas.">
+            A relaxing and informative experience just minutes away from Las Vegas.
+          </p>
+        </div>
+      </div>
+
+      <div class="cards" style="margin-top:50px;">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517498327491-f903e1e281cd?auto=format&fit=crop&w=1200&q=80" alt="Las Vegas Hotel Experience">
+          <div class="card-content">
+            <h3 data-en="Las Vegas Hotel Experience"
+                data-es="Experiencia por Hoteles de Las Vegas">
+              Las Vegas Hotel Experience
+            </h3>
+            <p data-en="Explore iconic hotels, famous landmarks, and the best photo spots across the Las Vegas Strip."
+               data-es="Explora hoteles icónicos, lugares famosos y los mejores puntos para fotos a lo largo del Strip de Las Vegas.">
+              Explore iconic hotels, famous landmarks, and the best photo spots across the Las Vegas Strip.
+            </p>
+            <div class="price"
+                 data-en="Flexible schedules"
+                 data-es="Horarios flexibles">
+              Flexible schedules
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Custom Adventure">
+          <div class="card-content">
+            <h3 data-en="Custom Private Adventure"
+                data-es="Aventura Privada Personalizada">
+              Custom Private Adventure
+            </h3>
+            <p data-en="Tell us what you want to see and we will help create a personalized experience made just for you."
+               data-es="Dinos qué quieres conocer y te ayudaremos a crear una experiencia personalizada hecha solo para ti.">
+              Tell us what you want to see and we will help create a personalized experience made just for you.
+            </p>
+            <div class="price"
+                 data-en="Made for your group"
+                 data-es="Hecho para tu grupo">
+              Made for your group
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <div class="about-box">
+        <img src="./milemundo-logo.png" alt="Milemundo Logo">
+
+        <div class="about-text">
+          <h2 data-en="Why Choose Milemundo?"
+              data-es="¿Por Qué Elegir Milemundo?">
+            Why Choose Milemundo?
+          </h2>
+
+          <p data-en="We focus on unique and personalized travel experiences in and around Las Vegas. Whether you want an exciting desert route, a comfortable hotel tour, or a special custom trip, we help make it happen."
+             data-es="Nos enfocamos en experiencias de viaje únicas y personalizadas en Las Vegas y sus alrededores. Ya sea que quieras una emocionante ruta por el desierto, un recorrido cómodo por hoteles o un viaje especial a tu medida, te ayudamos a hacerlo realidad.">
+            We focus on unique and personalized travel experiences in and around Las Vegas. Whether you want an exciting desert route, a comfortable hotel tour, or a special custom trip, we help make it happen.
+          </p>
+
+          <p data-en="Our goal is to offer unforgettable adventures with comfort, style, and flexibility."
+             data-es="Nuestro objetivo es ofrecer aventuras inolvidables con comodidad, estilo y flexibilidad.">
+            Our goal is to offer unforgettable adventures with comfort, style, and flexibility.
+          </p>
+
+          <div class="services-list">
+            <div class="service-item"
+                 data-en="Private Tours"
+                 data-es="Tours Privados">Private Tours</div>
+
+            <div class="service-item"
+                 data-en="Custom Trips"
+                 data-es="Viajes Personalizados">Custom Trips</div>
+
+            <div class="service-item"
+                 data-en="Hotel Experiences"
+                 data-es="Experiencias en Hoteles">Hotel Experiences</div>
+
+            <div class="service-item"
+                 data-en="Scenic Adventures"
+                 data-es="Aventuras Panorámicas">Scenic Adventures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2 class="section-title"
+            data-en="Contact & Booking"
+            data-es="Contacto y Reservas">
+          Contact & Booking
+        </h2>
+
+        <p data-en="Ready to plan your next Las Vegas adventure? Contact us today and let us create the perfect experience for you."
+           data-es="¿Listo para planear tu próxima aventura en Las Vegas? Contáctanos hoy y deja que creemos la experiencia perfecta para ti.">
+          Ready to plan your next Las Vegas adventure? Contact us today and let us create the perfect experience for you.
+        </p>
+
+        <p class="contact-info">Phone / WhatsApp: +1 (702) 665-9598</p>
+        <p class="contact-info">Email: tours@milemundo.com</p>
+
+        <a href="mailto:info@milemundo.com" class="btn btn-primary" style="margin-top:18px;"
+           data-en="Send Email"
+           data-es="Enviar Correo">
+          Send Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p data-en="© 2026 Milemundo. All rights reserved."
+       data-es="© 2026 Milemundo. Todos los derechos reservados.">
+      © 2026 Milemundo. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    function setLanguage(lang, btn){
+      const elements = document.querySelectorAll('[data-en]');
+      elements.forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+
+      btn.classList.add('active');
+      localStorage.setItem('milemundo_lang', lang);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('milemundo_lang') || 'en';
+      const buttons = document.querySelectorAll('.lang-btn');
+
+      if(savedLang === 'es'){
+        setLanguage('es', buttons[1]);
+      } else {
+        setLanguage('en', buttons[0]);
+      }
+    });
+  </script>
+
+</body>
+</html>
