@@ -1,1 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hoover Dam Tour | Milemundo</title>
+  <meta name="description" content="Discover Hoover Dam with Milemundo. Learn about its history, engineering, scenic views, and enjoy personalized tour services in Las Vegas." />
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:#3f4a2c;
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+      height:auto;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    :root{
+      --olive:#3f4a2c;
+      --olive-soft:#617949;
+      --brown:#3a2718;
+      --brown-soft:#5d3f28;
+      --cream:#f5e8d0;
+      --light:#fff7ea;
+      --shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    header{
+      min-height:78vh;
+      background:
+        linear-gradient(rgba(40,28,18,0.45), rgba(40,28,18,0.72)),
+        url('./hoover6.png') center center/cover no-repeat;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 16px;
+      background:rgba(32,22,14,0.28);
+      backdrop-filter:blur(6px);
+    }
+
+    .logo img{
+      height:52px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:8px;
+    }
+
+    .lang-btn{
+      border:none;
+      background:linear-gradient(135deg,#4f3522,#6f8f4a);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      min-width:48px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.22);
+      transition:0.25s;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active{
+      transform:translateY(-2px);
+      background:linear-gradient(135deg,#3a2718,#7ea256);
+      color:#fff8ee;
+    }
+
+    .hero{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px 16px 60px;
+    }
+
+    .hero-content{
+      max-width:900px;
+      padding:24px 16px;
+    }
+
+    .hero h1{
+      font-size:2.2rem;
+      color:#fff2d8;
+      font-weight:900;
+      line-height:1.15;
+      text-shadow:0 3px 14px rgba(0,0,0,0.38);
+      margin-bottom:16px;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:0 auto 24px;
+      color:#fff7eb;
+      font-size:1rem;
+      text-shadow:0 2px 10px rgba(0,0,0,0.28);
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:18px;
+      font-weight:900;
+      font-size:1rem;
+      box-shadow:0 10px 18px rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.18);
+      transition:0.25s;
+      min-width:220px;
+      text-align:center;
+      color:#fff8ee;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#3a2718,#6f8f4a);
+    }
+
+    .btn-secondary{
+      background:linear-gradient(135deg,#5a3b24,#5f7f3d);
+    }
+
+    section{
+      padding:60px 16px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2rem;
+      line-height:1.2;
+      color:#f2dfc3;
+      margin-bottom:14px;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      max-width:800px;
+      margin:0 auto 36px;
+      color:#f4ead8;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+
+    .info-card{
+      background:linear-gradient(135deg,#3a2718,#6b8747);
+      border-radius:22px;
+      padding:24px 20px;
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h3{
+      color:#fff0d4;
+      margin-bottom:12px;
+      font-size:1.3rem;
+    }
+
+    .info-card p{
+      color:#fff8ef;
+      font-size:0.98rem;
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:30px;
+    }
+
+    .fact-box{
+      background:linear-gradient(135deg,#4f3522,#6f8f4a);
+      padding:20px;
+      border-radius:18px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    .fact-box h4{
+      color:#fff0d4;
+      margin-bottom:8px;
+      font-size:1.05rem;
+    }
+
+    .fact-box p{
+      color:#fff7eb;
+      font-size:0.95rem;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      transition:0.4s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.05);
+    }
+
+    .services-box{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .services-text{
+      background:linear-gradient(135deg,#3a2718,#6b8747);
+      padding:26px 20px;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .services-text h3{
+      color:#fff0d4;
+      font-size:1.5rem;
+      margin-bottom:16px;
+    }
+
+    .services-text p{
+      color:#fff8ef;
+      margin-bottom:14px;
+    }
+
+    .services-list{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .service-item{
+      background:linear-gradient(135deg,#4f3522,#6f8f4a);
+      padding:16px;
+      border-radius:16px;
+      color:#fff8ef;
+      font-weight:700;
+      box-shadow:0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    .contact{
+      background:#2f2419;
+    }
+
+    .contact-box{
+      max-width:900px;
+      margin:auto;
+      background:linear-gradient(135deg,#3a2718,#6b8747);
+      padding:28px 20px;
+      border-radius:22px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-box h2{
+      color:#fff0d4;
+      margin-bottom:14px;
+      font-size:2rem;
+    }
+
+    .contact-box p{
+      color:#fff7ea;
+      margin-bottom:12px;
+    }
+
+    .contact-info{
+      margin-top:18px;
+      font-size:1rem;
+      font-weight:bold;
+      color:#f0dfc5;
+      word-break:break-word;
+    }
+
+    footer{
+      background:#21170f;
+      color:#d6c3a8;
+      text-align:center;
+      padding:22px 15px;
+      font-size:0.95rem;
+    }
+
+    @media (min-width:768px){
+      .topbar{
+        padding:20px 30px;
+      }
+
+      .logo img{
+        height:60px;
+      }
+
+      .hero{
+        padding:60px 20px 80px;
+      }
+
+      .hero h1{
+        font-size:3.2rem;
+      }
+
+      .hero p{
+        font-size:1.15rem;
+      }
+
+      .hero-buttons{
+        flex-direction:row;
+        justify-content:center;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .facts{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .gallery{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .gallery-item img{
+        height:300px;
+      }
+
+      .services-box{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="logo">
+        <a href="index.html">
+          <img src="./imagen-logo2.png" alt="Milemundo Logo">
+        </a>
+      </div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+        <button class="lang-btn" onclick="setLanguage('es', this)">ES</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1 data-en="Hoover Dam Tour with Milemundo"
+            data-es="Tour a la Presa Hoover con Milemundo">
+          Hoover Dam Tour with Milemundo
+        </h1>
+
+        <p data-en="Discover one of the most iconic landmarks near Las Vegas. Enjoy scenic views, impressive engineering, desert landscapes, and a personalized experience designed around your group."
+           data-es="Descubre uno de los lugares más icónicos cerca de Las Vegas. Disfruta de vistas panorámicas, ingeniería impresionante, paisajes desérticos y una experiencia personalizada diseñada para tu grupo.">
+          Discover one of the most iconic landmarks near Las Vegas. Enjoy scenic views, impressive engineering, desert landscapes, and a personalized experience designed around your group.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#gallery" class="btn btn-primary"
+             data-en="View Gallery"
+             data-es="Ver Galería">View Gallery</a>
+
+          <a href="#contact" class="btn btn-secondary"
+             data-en="Book Your Experience"
+             data-es="Reserva Tu Experiencia">Book Your Experience</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about-hoover">
+    <div class="container">
+      <h2 class="section-title"
+          data-en="About Hoover Dam"
+          data-es="Sobre la Presa Hoover">
+        About Hoover Dam
+      </h2>
+
+      <p class="section-subtitle"
+         data-en="Hoover Dam is one of the most famous engineering landmarks in the American Southwest and one of the top day-trip experiences from Las Vegas."
+         data-es="La Presa Hoover es una de las obras de ingeniería más famosas del suroeste de Estados Unidos y una de las mejores experiencias de un día desde Las Vegas.">
+        Hoover Dam is one of the most famous engineering landmarks in the American Southwest and one of the top day-trip experiences from Las Vegas.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3 data-en="A Legendary Landmark"
+              data-es="Un Lugar Legendario">
+            A Legendary Landmark
+          </h3>
+
+          <p data-en="Located between Nevada and Arizona, Hoover Dam stands as one of the most recognized symbols of modern engineering in the desert. Its scale, surrounding cliffs, and panoramic views make it an unforgettable stop for visitors exploring the region."
+             data-es="Ubicada entre Nevada y Arizona, la Presa Hoover es uno de los símbolos más reconocidos de la ingeniería moderna en el desierto. Su tamaño, los cañones que la rodean y sus vistas panorámicas la convierten en una parada inolvidable para quienes visitan la región.">
+            Located between Nevada and Arizona, Hoover Dam stands as one of the most recognized symbols of modern engineering in the desert. Its scale, surrounding cliffs, and panoramic views make it an unforgettable stop for visitors exploring the region.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3 data-en="Views, History & Experience"
+              data-es="Vistas, Historia y Experiencia">
+            Views, History & Experience
+          </h3>
+
+          <p data-en="Visitors love Hoover Dam not only for its history, but also for the dramatic desert scenery, the Colorado River views, nearby overlooks, and the chance to combine the visit with other custom experiences around Las Vegas."
+             data-es="Los visitantes aman la Presa Hoover no solo por su historia, sino también por los impresionantes paisajes del desierto, las vistas del río Colorado, los miradores cercanos y la posibilidad de combinar la visita con otras experiencias personalizadas alrededor de Las Vegas.">
+            Visitors love Hoover Dam not only for its history, but also for the dramatic desert scenery, the Colorado River views, nearby overlooks, and the chance to combine the visit with other custom experiences around Las Vegas.
+          </p>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact-box">
+          <h4 data-en="Scenic Desert Setting"
+              data-es="Entorno Desértico Panorámico">
+            Scenic Desert Setting
+          </h4>
+          <p data-en="A perfect stop for photography, panoramic views, and memorable moments outside the city."
+             data-es="Una parada perfecta para fotografía, vistas panorámicas y momentos memorables fuera de la ciudad.">
+            A perfect stop for photography, panoramic views, and memorable moments outside the city.
+          </p>
+        </div>
+
+        <div class="fact-box">
+          <h4 data-en="Close to Las Vegas"
+              data-es="Cerca de Las Vegas">
+            Close to Las Vegas
+          </h4>
+          <p data-en="Ideal for travelers who want to see a famous landmark without spending the entire day far from town."
+             data-es="Ideal para viajeros que quieren conocer un lugar famoso sin pasar todo el día lejos de la ciudad.">
+            Ideal for travelers who want to see a famous landmark without spending the entire day far from town.
+          </p>
+        </div>
+
+        <div class="fact-box">
+          <h4 data-en="Great for Custom Tours"
+              data-es="Ideal para Tours Personalizados">
+            Great for Custom Tours
+          </h4>
+          <p data-en="Easy to combine with scenic routes, skyline stops, hotels, and other Milemundo experiences."
+             data-es="Fácil de combinar con rutas escénicas, paradas panorámicas, hoteles y otras experiencias de Milemundo.">
+            Easy to combine with scenic routes, skyline stops, hotels, and other Milemundo experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title"
+          data-en="Hoover Dam Photo Gallery"
+          data-es="Galería de Fotos de la Presa Hoover">
+        Hoover Dam Photo Gallery
+      </h2>
+
+      <p class="section-subtitle"
+         data-en="A look at the impressive views, architecture, desert surroundings, and sightseeing experience around Hoover Dam."
+         data-es="Una mirada a las impresionantes vistas, arquitectura, entorno desértico y experiencia turística alrededor de la Presa Hoover.">
+        A look at the impressive views, architecture, desert surroundings, and sightseeing experience around Hoover Dam.
+      </p>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="./hoover2.jpeg" alt="Hoover Dam view 1">
+        </div>
+
+        <div class="gallery-item">
+          <img src="./hoover3.jpeg" alt="Hoover Dam view 2">
+        </div>
+
+        <div class="gallery-item">
+          <img src="./hoover5.jpeg" alt="Hoover Dam view 3">
+        </div>
+
+        <div class="gallery-item">
+          <img src="./hoover6.png" alt="Hoover Dam view 4">
+        </div>
+
+        <div class="gallery-item">
+          <img src="./hoover8.jpeg" alt="Hoover Dam view 5">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title"
+          data-en="Personalized Services by Milemundo"
+          data-es="Servicios Personalizados de Milemundo">
+        Personalized Services by Milemundo
+      </h2>
+
+      <p class="section-subtitle"
+         data-en="Milemundo helps create a custom experience around Hoover Dam based on your interests, schedule, and group."
+         data-es="Milemundo te ayuda a crear una experiencia personalizada alrededor de la Presa Hoover según tus intereses, tu horario y tu grupo.">
+        Milemundo helps create a custom experience around Hoover Dam based on your interests, schedule, and group.
+      </p>
+
+      <div class="services-box">
+        <div class="services-text">
+          <h3 data-en="Travel Your Way"
+              data-es="Viaja a Tu Manera">
+            Travel Your Way
+          </h3>
+
+          <p data-en="Whether you want a relaxed scenic stop, a sightseeing route with multiple photo locations, or a custom private experience, Milemundo can help organize a visit that feels comfortable, flexible, and memorable."
+             data-es="Ya sea que quieras una parada tranquila con vistas, una ruta turística con múltiples lugares para fotos o una experiencia privada personalizada, Milemundo puede ayudarte a organizar una visita cómoda, flexible y memorable.">
+            Whether you want a relaxed scenic stop, a sightseeing route with multiple photo locations, or a custom private experience, Milemundo can help organize a visit that feels comfortable, flexible, and memorable.
+          </p>
+
+          <p data-en="Our goal is to make your experience simple and personalized, whether you are visiting as a couple, family, or group."
+             data-es="Nuestro objetivo es hacer tu experiencia simple y personalizada, ya sea que viajes en pareja, en familia o en grupo.">
+            Our goal is to make your experience simple and personalized, whether you are visiting as a couple, family, or group.
+          </p>
+        </div>
+
+        <div class="services-list">
+          <div class="service-item"
+               data-en="Private Custom Routes"
+               data-es="Rutas Privadas Personalizadas">Private Custom Routes</div>
+
+          <div class="service-item"
+               data-en="Photo & Scenic Stops"
+               data-es="Paradas Panorámicas y para Fotos">Photo & Scenic Stops</div>
+
+          <div class="service-item"
+               data-en="Flexible Group Planning"
+               data-es="Planificación Flexible para Grupos">Flexible Group Planning</div>
+
+          <div class="service-item"
+               data-en="Las Vegas Add-On Experiences"
+               data-es="Experiencias Adicionales en Las Vegas">Las Vegas Add-On Experiences</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2 data-en="Contact & Booking"
+            data-es="Contacto y Reservas">
+          Contact & Booking
+        </h2>
+
+        <p data-en="Ready to explore Hoover Dam with a custom Milemundo experience? Contact us and we will help plan the right route for you."
+           data-es="¿Listo para explorar la Presa Hoover con una experiencia personalizada de Milemundo? Contáctanos y te ayudaremos a planear la ruta ideal para ti.">
+          Ready to explore Hoover Dam with a custom Milemundo experience? Contact us and we will help plan the right route for you.
+        </p>
+
+        <p class="contact-info">Phone / WhatsApp: +1 (702) 665-9598</p>
+        <p class="contact-info">Email: tours@milemundo.com</p>
+        <p class="contact-info">Instagram: @milemundo</p>
+
+        <div style="margin-top:22px;">
+          <a href="mailto:tours@milemundo.com" class="btn btn-primary"
+             data-en="Send Email"
+             data-es="Enviar Correo">Send Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p data-en="© 2026 Milemundo. All rights reserved."
+       data-es="© 2026 Milemundo. Todos los derechos reservados.">
+      © 2026 Milemundo. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    function setLanguage(lang, btn){
+      const elements = document.querySelectorAll('[data-en]');
+      elements.forEach(el => {
+        const newText = el.getAttribute('data-' + lang);
+        if(newText){
+          el.textContent = newText;
+        }
+      });
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+
+      btn.classList.add('active');
+      localStorage.setItem('milemundo_lang', lang);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('milemundo_lang') || 'en';
+      const buttons = document.querySelectorAll('.lang-btn');
+
+      if(savedLang === 'es'){
+        setLanguage('es', buttons[1]);
+      } else {
+        setLanguage('en', buttons[0]);
+      }
+    });
+  </script>
+
+</body>
+</html>
