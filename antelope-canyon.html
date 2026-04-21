@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antelope Canyon Tour | Milemundo</title>
+  <meta name="description" content="Discover Antelope Canyon with Milemundo. Private-style experiences, photo stops, guided planning, custom adventures, and unforgettable Arizona views." />
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:#3f4a2c;
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+      border-radius:20px;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    :root{
+      --olive:#3f4a2c;
+      --olive-soft:#55643a;
+      --brown:#3a2718;
+      --brown-soft:rgba(58,39,24,0.92);
+      --cream:#f5f1e8;
+      --gold:#d8b36a;
+    }
+
+    .hero{
+      min-height:90vh;
+      background:
+        linear-gradient(rgba(40,28,18,0.45), rgba(40,28,18,0.72)),
+        url("antelope-hero.jpg") center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .hero-content{
+      max-width:950px;
+    }
+
+    .hero h1{
+      font-size:58px;
+      color:#fff7eb;
+      margin-bottom:15px;
+      text-shadow:0 4px 18px rgba(0,0,0,0.35);
+    }
+
+    .hero p{
+      font-size:20px;
+      max-width:850px;
+      margin:0 auto 12px;
+      color:#f7f1e6;
+    }
+
+    .hero-btns{
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 26px;
+      border-radius:999px;
+      font-weight:bold;
+      transition:.3s ease;
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:#2d1d12;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.16);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .section{
+      width:min(1180px, 92%);
+      margin:auto;
+      padding:72px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:38px;
+      margin-bottom:16px;
+      color:#fff4df;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      max-width:920px;
+      margin:0 auto 42px;
+      font-size:18px;
+      color:#ece1cf;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    .box{
+      background:var(--brown-soft);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .box h3{
+      font-size:30px;
+      color:#fff1d7;
+      margin-bottom:16px;
+    }
+
+    .box p{
+      margin-bottom:15px;
+      font-size:17px;
+      color:#f4ead9;
+    }
+
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .highlight{
+      background:var(--olive-soft);
+      border-radius:18px;
+      padding:18px 14px;
+      text-align:center;
+      font-weight:bold;
+      color:#fff;
+      font-size:15px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:28px;
+    }
+
+    .card{
+      background:var(--brown-soft);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .card img{
+      height:300px;
+      object-fit:cover;
+      border-radius:0;
+    }
+
+    .card-content{
+      padding:24px;
+    }
+
+    .card-content h3{
+      font-size:28px;
+      margin-bottom:12px;
+      color:#fff1d7;
+    }
+
+    .card-content p{
+      font-size:16px;
+      color:#f4ead9;
+      margin-bottom:12px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .tag{
+      background:var(--olive-soft);
+      color:#fff;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:14px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .gallery img{
+      height:280px;
+      object-fit:cover;
+    }
+
+    .milemundo-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .benefit{
+      background:var(--olive-soft);
+      border-radius:18px;
+      padding:16px;
+      color:#fff;
+      text-align:center;
+      font-weight:bold;
+      font-size:15px;
+    }
+
+    .cta{
+      text-align:center;
+      padding:10px 20px 85px;
+    }
+
+    .cta h2{
+      font-size:40px;
+      margin-bottom:14px;
+      color:#fff4df;
+    }
+
+    .cta p{
+      max-width:880px;
+      margin:0 auto 24px;
+      font-size:18px;
+      color:#ece1cf;
+    }
+
+    footer{
+      background:#342618;
+      text-align:center;
+      padding:24px 15px;
+      color:#eadfcf;
+      font-size:15px;
+    }
+
+    @media (max-width: 980px){
+      .about-grid,
+      .cards,
+      .milemundo-grid,
+      .gallery,
+      .highlight-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .card img,
+      .gallery img{
+        height:240px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero{
+        min-height:78vh;
+        padding:30px 16px;
+      }
+
+      .hero h1{
+        font-size:34px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .section{
+        padding:56px 0;
+      }
+
+      .section-title{
+        font-size:30px;
+      }
+
+      .section-subtitle{
+        font-size:16px;
+      }
+
+      .box,
+      .card-content{
+        padding:22px;
+      }
+
+      .box h3,
+      .card-content h3{
+        font-size:24px;
+      }
+
+      .benefits{
+        grid-template-columns:1fr;
+      }
+
+      .cta h2{
+        font-size:31px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Antelope Canyon</h1>
+      <p>
+        A dream landscape of flowing sandstone, golden light, and unforgettable desert beauty.
+      </p>
+      <p>
+        Un paisaje de ensueño con roca ondulada, luz dorada y una belleza del desierto imposible de olvidar.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#discover" class="btn btn-primary">Discover / Descubrir</a>
+        <a href="#milemundo" class="btn btn-secondary">Why Milemundo / Por Qué Milemundo</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="discover">
+    <h2 class="section-title">What Is Antelope Canyon? / ¿Qué Es Antelope Canyon?</h2>
+    <p class="section-subtitle">
+      Antelope Canyon is one of the most famous slot canyons in Arizona and one of the most photographed natural places in the American Southwest. Its smooth sandstone walls, narrow passages, and changing light create a magical experience that feels different every hour of the day.
+      <br><br>
+      Antelope Canyon es uno de los cañones de ranura más famosos de Arizona y uno de los lugares naturales más fotografiados del suroeste de Estados Unidos. Sus paredes suaves de piedra arenisca, sus pasajes estrechos y la luz cambiante crean una experiencia mágica que se siente distinta a cada hora del día.
+    </p>
+
+    <div class="about-grid">
+      <div class="box">
+        <h3>Nature, Light & Wonder</h3>
+        <p>
+          Antelope Canyon was shaped over time by water and erosion, creating flowing rock formations that look almost like waves. The colors move from orange and red to gold and soft purple tones depending on the sunlight.
+        </p>
+        <p>
+          Antelope Canyon fue moldeado con el tiempo por el agua y la erosión, creando formaciones de roca fluidas que parecen olas. Los colores cambian entre naranja, rojo, dorado y tonos violetas suaves según la luz del sol.
+        </p>
+        <p>
+          It is not just a place to visit — it is a place to feel, admire, photograph, and remember.
+        </p>
+        <p>
+          No es solo un lugar para visitar — es un lugar para sentir, admirar, fotografiar y recordar.
+        </p>
+
+        <div class="highlight-grid">
+          <div class="highlight">Epic Photos / Fotos Épicas</div>
+          <div class="highlight">Natural Beauty / Belleza Natural</div>
+          <div class="highlight">Desert Adventure / Aventura</div>
+          <div class="highlight">Unforgettable Views / Vistas Inolvidables</div>
+        </div>
+      </div>
+
+      <div>
+        <img src="antelope-light.jpg" alt="Light inside Antelope Canyon">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Upper & Lower Antelope Canyon / Upper y Lower Antelope Canyon</h2>
+    <p class="section-subtitle">
+      Antelope Canyon is usually visited through two main sections. Both are spectacular, but each one offers a different type of experience.
+      <br><br>
+      Antelope Canyon normalmente se visita a través de dos secciones principales. Las dos son espectaculares, pero cada una ofrece una experiencia diferente.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="upper-antelope.jpg" alt="Upper Antelope Canyon">
+        <div class="card-content">
+          <h3>Upper Antelope Canyon</h3>
+          <p>
+            Upper Antelope Canyon is the more accessible side and is famous for its dramatic beams of light, taller walls, and smoother walking route. It is ideal for visitors who want a more relaxed experience and iconic photo moments.
+          </p>
+          <p>
+            Upper Antelope Canyon es la parte más accesible y es famosa por sus rayos de luz, sus paredes más altas y un recorrido más cómodo. Es ideal para quienes quieren una experiencia más relajada y fotos icónicas.
+          </p>
+          <div class="tags">
+            <span class="tag">Easy Access</span>
+            <span class="tag">Light Beams</span>
+            <span class="tag">Famous Photos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="lower-antelope.jpg" alt="Lower Antelope Canyon">
+        <div class="card-content">
+          <h3>Lower Antelope Canyon</h3>
+          <p>
+            Lower Antelope Canyon feels more adventurous. It is narrower in parts and includes stairs and tighter passages, which makes the visit more dynamic and exciting for travelers who want a deeper canyon experience.
+          </p>
+          <p>
+            Lower Antelope Canyon se siente más aventurero. Es más estrecho en algunas partes e incluye escaleras y pasos más cerrados, lo que hace la visita más dinámica y emocionante para quienes quieren una experiencia más intensa dentro del cañón.
+          </p>
+          <div class="tags">
+            <span class="tag">Adventure</span>
+            <span class="tag">Stairs</span>
+            <span class="tag">Unique Angles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Why Visit Antelope Canyon? / ¿Por Qué Visitar Antelope Canyon?</h2>
+    <div class="about-grid">
+      <div>
+        <img src="milemundo-antelope.jpg" alt="Antelope Canyon travel experience">
+      </div>
+
+      <div class="box">
+        <h3>A Place That Feels Unreal</h3>
+        <p>
+          Antelope Canyon is one of those places that truly looks different in person. The shapes, the silence, the movement of the light, and the colors inside the rock make it feel almost surreal.
+        </p>
+        <p>
+          Antelope Canyon es uno de esos lugares que realmente se ven diferentes en persona. Las formas, el silencio, el movimiento de la luz y los colores dentro de la roca hacen que se sienta casi irreal.
+        </p>
+        <p>
+          It is perfect for couples, families, photographers, first-time Arizona visitors, and anyone who wants something more special than a normal sightseeing stop.
+        </p>
+        <p>
+          Es perfecto para parejas, familias, fotógrafos, personas que visitan Arizona por primera vez y cualquiera que quiera algo más especial que una parada turística normal.
+        </p>
+        <p>
+          It also pairs beautifully with nearby desert adventures, scenic routes, iconic stops, and custom day experiences.
+        </p>
+        <p>
+          Además combina perfectamente con aventuras del desierto cercanas, rutas panorámicas, paradas icónicas y experiencias personalizadas de un día completo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Gallery / Galería</h2>
+    <p class="section-subtitle">
+      Add your favorite Antelope Canyon images here to create a visual page that feels powerful, elegant, and unforgettable.
+      <br><br>
+      Agrega aquí tus fotos favoritas de Antelope Canyon para crear una página visual, poderosa, elegante e inolvidable.
+    </p>
+
+    <div class="gallery">
+      <img src="antelope-hero.jpg" alt="Antelope Canyon hero view">
+      <img src="upper-antelope.jpg" alt="Upper Antelope Canyon curves">
+      <img src="lower-antelope.jpg" alt="Lower Antelope Canyon textures">
+    </div>
+  </section>
+
+  <section class="section" id="milemundo">
+    <h2 class="section-title">Why Experience It with Milemundo / Por Qué Vivirlo con Milemundo</h2>
+    <p class="section-subtitle">
+      Milemundo is not just about getting you there. It is about turning the visit into a complete memory, with style, flexibility, comfort, and a more personal touch.
+      <br><br>
+      Milemundo no se trata solo de llevarte hasta allí. Se trata de convertir la visita en un recuerdo completo, con estilo, flexibilidad, comodidad y un toque más personal.
+    </p>
+
+    <div class="milemundo-grid">
+      <div class="box">
+        <h3>Milemundo Makes It Different</h3>
+        <p>
+          With Milemundo, the experience feels more personal from the beginning. Instead of a rushed stop, the day can be built around the mood of the trip: scenic moments, comfort, flexible planning, and beautiful memories.
+        </p>
+        <p>
+          Con Milemundo, la experiencia se siente más personal desde el principio. En lugar de una parada apresurada, el día puede organizarse según el ritmo del viaje: momentos panorámicos, comodidad, planificación flexible y recuerdos hermosos.
+        </p>
+        <p>
+          We focus on the full experience around the destination: the ride, the atmosphere, the photo opportunities, the pacing, and the combination with other incredible places if desired.
+        </p>
+        <p>
+          Nos enfocamos en la experiencia completa alrededor del destino: el trayecto, el ambiente, las oportunidades para fotos, el ritmo del paseo y la combinación con otros lugares increíbles si así lo deseas.
+        </p>
+        <p>
+          Milemundo can help create a day that feels exclusive, comfortable, and memorable — not just another tour.
+        </p>
+        <p>
+          Milemundo puede ayudar a crear un día que se sienta exclusivo, cómodo y memorable — no solo otro tour más.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3>What Milemundo Offers / Lo Que Ofrece Milemundo</h3>
+
+        <div class="benefits">
+          <div class="benefit">Custom Experiences / Experiencias Personalizadas</div>
+          <div class="benefit">Beautiful Photo Stops / Paradas para Fotos</div>
+          <div class="benefit">Relaxed Timing / Sin Apuro</div>
+          <div class="benefit">Guided Planning / Planificación Guiada</div>
+          <div class="benefit">Scenic Desert Routes / Rutas Panorámicas</div>
+          <div class="benefit">Comfort & Style / Comodidad y Estilo</div>
+          <div class="benefit">Flexible Adventures / Aventuras Flexibles</div>
+          <div class="benefit">Combo Day Trips / Experiencias Combinadas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Book the Experience / Reserva la Experiencia</h2>
+    <p>
+      Antelope Canyon is already unforgettable. With Milemundo, it can become a complete experience filled with emotion, beauty, comfort, and amazing moments worth remembering.
+      <br><br>
+      Antelope Canyon ya es inolvidable. Con Milemundo, puede convertirse en una experiencia completa llena de emoción, belleza, comodidad y momentos increíbles que valen la pena recordar.
+    </p>
+    <a href="#" class="btn btn-primary">Book Now / Reservar</a>
+  </section>
+
+  <footer>
+    © 2026 Milemundo | Antelope Canyon Experience
+  </footer>
+
+</body>
+</html>
