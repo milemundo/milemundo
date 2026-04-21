@@ -1,1 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antelope Canyon Tour | Milemundo</title>
+  <meta name="description" content="Discover Antelope Canyon with Milemundo. Bilingual premium page with interactive gallery, custom desert experiences, photo stops, and unforgettable Arizona views." />
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(216,179,106,0.10), transparent 28%),
+        linear-gradient(180deg,#364125 0%, #3f4a2c 35%, #342618 100%);
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    :root{
+      --olive:#3f4a2c;
+      --olive-soft:#55643a;
+      --olive-bright:#7c9253;
+      --brown:#3a2718;
+      --brown-deep:#24170f;
+      --brown-soft:rgba(58,39,24,0.88);
+      --cream:#f5f1e8;
+      --gold:#d8b36a;
+      --gold-soft:#efd49a;
+      --border:rgba(255,255,255,0.10);
+      --shadow:0 14px 40px rgba(0,0,0,0.24);
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(14px);
+      background:rgba(28,20,13,0.58);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-inner{
+      width:min(1220px, 92%);
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      color:#fff3dc;
+      letter-spacing:.5px;
+      font-size:1.05rem;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#d8b36a,#7c9253);
+      color:#2d1d12;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .mini-nav a{
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      color:#f7eddd;
+      font-size:.92rem;
+      transition:.25s ease;
+    }
+
+    .mini-nav a:hover{
+      background:rgba(216,179,106,0.18);
+      transform:translateY(-1px);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:8px;
+    }
+
+    .lang-btn{
+      border:none;
+      background:linear-gradient(135deg,#4a311f,#6e8448);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      min-width:54px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.20);
+      border:1px solid rgba(255,255,255,0.18);
+      transition:.25s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active{
+      transform:translateY(-2px);
+      background:linear-gradient(135deg,#d8b36a,#7c9253);
+      color:#2d1d12;
+    }
+
+    .hero{
+      min-height:92vh;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:70px 18px 60px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(18,12,8,0.28), rgba(18,12,8,0.78)),
+        url("antelope-hero.jpg") center center / cover no-repeat;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,0.18), transparent 22%),
+        linear-gradient(180deg, rgba(216,179,106,0.08), transparent 45%);
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(1080px, 100%);
+      background:rgba(39,25,16,0.30);
+      border:1px solid rgba(255,255,255,0.10);
+      backdrop-filter:blur(10px);
+      border-radius:28px;
+      padding:40px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      margin-bottom:18px;
+      background:rgba(216,179,106,0.16);
+      color:#fff3d4;
+      border:1px solid rgba(255,255,255,0.10);
+      font-weight:700;
+      font-size:.92rem;
+      letter-spacing:.4px;
+    }
+
+    .hero h1{
+      font-size:clamp(2.4rem, 6vw, 4.7rem);
+      color:#fff7eb;
+      margin-bottom:16px;
+      line-height:1.05;
+      text-shadow:0 5px 18px rgba(0,0,0,0.34);
+    }
+
+    .hero p{
+      font-size:clamp(1rem, 2vw, 1.18rem);
+      max-width:930px;
+      margin:0 auto 12px;
+      color:#f8f1e6;
+    }
+
+    .hero-btns{
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 26px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.3s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),#f0d8a0);
+      color:#2d1d12;
+      box-shadow:0 12px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.16);
+      backdrop-filter:blur(5px);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.01);
+    }
+
+    .quick-stats{
+      width:min(1180px,92%);
+      margin:-38px auto 0;
+      position:relative;
+      z-index:10;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .stat{
+      background:linear-gradient(135deg, rgba(58,39,24,0.94), rgba(85,100,58,0.92));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:22px;
+      padding:20px 16px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.1rem;
+      color:#fff2d7;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      font-size:.95rem;
+      color:#efe3cf;
+    }
+
+    .section{
+      width:min(1180px, 92%);
+      margin:auto;
+      padding:78px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:clamp(2rem, 4vw, 2.8rem);
+      margin-bottom:16px;
+      color:#fff4df;
+      line-height:1.15;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      max-width:920px;
+      margin:0 auto 42px;
+      font-size:1.06rem;
+      color:#ece1cf;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .box{
+      background:linear-gradient(180deg, rgba(58,39,24,0.90), rgba(43,29,19,0.92));
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .box h3{
+      font-size:1.9rem;
+      color:#fff1d7;
+      margin-bottom:16px;
+      line-height:1.2;
+    }
+
+    .box p{
+      margin-bottom:14px;
+      font-size:1.02rem;
+      color:#f4ead9;
+    }
+
+    .media-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .media-card img{
+      height:100%;
+      min-height:420px;
+      object-fit:cover;
+      transition:transform .6s ease;
+    }
+
+    .media-card:hover img{
+      transform:scale(1.06);
+    }
+
+    .media-badge{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      background:rgba(26,18,12,0.70);
+      color:#fff0d2;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      font-size:.92rem;
+      backdrop-filter:blur(8px);
+    }
+
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .highlight{
+      background:linear-gradient(135deg,#53623a,#778b52);
+      border-radius:18px;
+      padding:18px 14px;
+      text-align:center;
+      font-weight:700;
+      color:#fff;
+      font-size:.95rem;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:.25s ease;
+    }
+
+    .highlight:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 28px rgba(0,0,0,0.20);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:28px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(58,39,24,0.90), rgba(43,29,19,0.92));
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.08);
+      transition:.35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card img{
+      height:310px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:24px;
+    }
+
+    .card-content h3{
+      font-size:1.8rem;
+      margin-bottom:12px;
+      color:#fff1d7;
+    }
+
+    .card-content p{
+      font-size:1rem;
+      color:#f4ead9;
+      margin-bottom:12px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .tag{
+      background:rgba(124,146,83,0.88);
+      color:#fff;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.9rem;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .gallery-controls{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .filter-btn{
+      border:none;
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      color:#fff5e8;
+      border:1px solid rgba(255,255,255,0.10);
+      cursor:pointer;
+      font-weight:700;
+      transition:.25s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover{
+      background:linear-gradient(135deg,#d8b36a,#7c9253);
+      color:#2d1d12;
+      transform:translateY(-2px);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:22px;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.08);
+      background:#2d1d12;
+      transition:.35s ease;
+    }
+
+    .gallery-item:hover{
+      transform:translateY(-6px);
+    }
+
+    .gallery-item img{
+      height:280px;
+      object-fit:cover;
+      transition:transform .55s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.08);
+    }
+
+    .gallery-item::after{
+      content:"View / Ver";
+      position:absolute;
+      inset:auto 14px 14px 14px;
+      background:rgba(19,13,9,0.62);
+      color:#fff2db;
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:.92rem;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.10);
+      backdrop-filter:blur(6px);
+    }
+
+    .milemundo-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .benefit{
+      background:linear-gradient(135deg,#53623a,#738651);
+      border-radius:18px;
+      padding:16px;
+      color:#fff;
+      text-align:center;
+      font-weight:700;
+      font-size:.95rem;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:.25s ease;
+    }
+
+    .benefit:hover{
+      transform:translateY(-3px);
+    }
+
+    .faq{
+      display:grid;
+      gap:14px;
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    .faq-item{
+      background:linear-gradient(180deg, rgba(58,39,24,0.90), rgba(43,29,19,0.92));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .faq-question{
+      width:100%;
+      background:none;
+      border:none;
+      color:#fff4df;
+      text-align:left;
+      padding:20px 22px;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .faq-question span:last-child{
+      font-size:1.3rem;
+      transition:.25s ease;
+    }
+
+    .faq-item.active .faq-question span:last-child{
+      transform:rotate(45deg);
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+      padding:0 22px;
+    }
+
+    .faq-answer p{
+      padding:0 0 20px;
+      color:#f2e6d5;
+    }
+
+    .cta{
+      text-align:center;
+      padding:0 20px 90px;
+    }
+
+    .cta-box{
+      width:min(1060px, 100%);
+      margin:auto;
+      background:
+        linear-gradient(135deg, rgba(58,39,24,0.92), rgba(85,100,58,0.88));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      padding:42px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta h2{
+      font-size:clamp(2rem, 4vw, 2.8rem);
+      margin-bottom:14px;
+      color:#fff4df;
+    }
+
+    .cta p{
+      max-width:880px;
+      margin:0 auto 24px;
+      font-size:1.06rem;
+      color:#ece1cf;
+    }
+
+    footer{
+      background:#24170f;
+      text-align:center;
+      padding:26px 15px;
+      color:#eadfcf;
+      font-size:.95rem;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.88);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      opacity:0;
+      visibility:hidden;
+      transition:.25s ease;
+      z-index:9999;
+    }
+
+    .lightbox.open{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .lightbox-content{
+      width:min(960px, 100%);
+      position:relative;
+    }
+
+    .lightbox img{
+      width:100%;
+      max-height:82vh;
+      object-fit:contain;
+      border-radius:18px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.40);
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:-14px;
+      right:-6px;
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:50%;
+      background:#fff;
+      color:#1e140d;
+      font-size:1.4rem;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:all .7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width: 1080px){
+      .quick-stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .about-grid,
+      .cards,
+      .milemundo-grid,
+      .gallery,
+      .highlight-grid{
+        grid-template-columns:1fr;
+      }
+
+      .media-card img{
+        min-height:340px;
+      }
+    }
+
+    @media (max-width: 760px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .topbar-right{
+        justify-content:space-between;
+      }
+
+      .mini-nav{
+        justify-content:flex-start;
+      }
+
+      .hero{
+        min-height:82vh;
+        padding:44px 16px 52px;
+      }
+
+      .hero-content{
+        padding:30px 18px;
+      }
+
+      .quick-stats{
+        grid-template-columns:1fr;
+        margin-top:-26px;
+      }
+
+      .box,
+      .card-content{
+        padding:22px;
+      }
+
+      .benefits{
+        grid-template-columns:1fr;
+      }
+
+      .card img,
+      .gallery-item img{
+        height:240px;
+      }
+
+      .section{
+        padding:62px 0;
+      }
+
+      .gallery-controls{
+        justify-content:flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>Milemundo</div>
+      </div>
+
+      <div class="topbar-right">
+        <nav class="mini-nav">
+          <a href="#discover" data-en="Discover" data-es="Descubrir">Discover</a>
+          <a href="#gallery" data-en="Gallery" data-es="Galería">Gallery</a>
+          <a href="#milemundo" data-en="Milemundo" data-es="Milemundo">Milemundo</a>
+          <a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
+        </nav>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+          <button class="lang-btn" onclick="setLanguage('es', this)">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-content reveal">
+      <div class="eyebrow"
+           data-en="Arizona Desert Experience"
+           data-es="Experiencia del Desierto de Arizona">
+        Arizona Desert Experience
+      </div>
+
+      <h1
+        data-en="Antelope Canyon"
+        data-es="Antelope Canyon">
+        Antelope Canyon
+      </h1>
+
+      <p
+        data-en="A dream landscape of flowing sandstone, golden light, and unforgettable desert beauty."
+        data-es="Un paisaje de ensueño con roca ondulada, luz dorada y una belleza del desierto imposible de olvidar.">
+        A dream landscape of flowing sandstone, golden light, and unforgettable desert beauty.
+      </p>
+
+      <p
+        data-en="Explore a premium bilingual page designed to feel elegant, visual, and interactive from beginning to end."
+        data-es="Explora una página premium bilingüe diseñada para sentirse elegante, visual e interactiva de principio a fin.">
+        Explore a premium bilingual page designed to feel elegant, visual, and interactive from beginning to end.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#discover" class="btn btn-primary"
+           data-en="Discover More"
+           data-es="Descubrir Más">
+          Discover More
+        </a>
+        <a href="#gallery" class="btn btn-secondary"
+           data-en="View Gallery"
+           data-es="Ver Galería">
+          View Gallery
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="quick-stats reveal">
+    <div class="stat">
+      <strong data-en="Iconic Light" data-es="Luz Icónica">Iconic Light</strong>
+      <span data-en="Famous canyon glow" data-es="Brillo famoso del cañón">Famous canyon glow</span>
+    </div>
+    <div class="stat">
+      <strong data-en="Epic Photos" data-es="Fotos Épicas">Epic Photos</strong>
+      <span data-en="Perfect visual moments" data-es="Momentos visuales perfectos">Perfect visual moments</span>
+    </div>
+    <div class="stat">
+      <strong data-en="Premium Feel" data-es="Ambiente Premium">Premium Feel</strong>
+      <span data-en="Elegant desert experience" data-es="Experiencia elegante del desierto">Elegant desert experience</span>
+    </div>
+    <div class="stat">
+      <strong data-en="Flexible Day" data-es="Día Flexible">Flexible Day</strong>
+      <span data-en="Custom rhythm and stops" data-es="Ritmo y paradas a medida">Custom rhythm and stops</span>
+    </div>
+  </section>
+
+  <section class="section reveal" id="discover">
+    <h2 class="section-title"
+        data-en="What Is Antelope Canyon?"
+        data-es="¿Qué Es Antelope Canyon?">
+      What Is Antelope Canyon?
+    </h2>
+
+    <p class="section-subtitle"
+       data-en="Antelope Canyon is one of the most photographed natural places in Arizona. Its soft sandstone curves, narrow passages, and shifting light create an experience that feels almost unreal."
+       data-es="Antelope Canyon es uno de los lugares naturales más fotografiados de Arizona. Sus curvas suaves de arenisca, sus pasajes estrechos y su luz cambiante crean una experiencia que se siente casi irreal.">
+      Antelope Canyon is one of the most photographed natural places in Arizona. Its soft sandstone curves, narrow passages, and shifting light create an experience that feels almost unreal.
+    </p>
+
+    <div class="about-grid">
+      <div class="box">
+        <h3
+          data-en="Nature, Light & Wonder"
+          data-es="Naturaleza, Luz y Asombro">
+          Nature, Light & Wonder
+        </h3>
+
+        <p
+          data-en="Over time, water and erosion shaped these flowing canyon walls into forms that look like waves, silk, and sculpture all at once."
+          data-es="Con el tiempo, el agua y la erosión moldearon estas paredes fluidas del cañón en formas que parecen olas, seda y escultura al mismo tiempo.">
+          Over time, water and erosion shaped these flowing canyon walls into forms that look like waves, silk, and sculpture all at once.
+        </p>
+
+        <p
+          data-en="Depending on the light, the canyon can move between deep orange, gold, soft red, and violet tones, giving every visit a different mood."
+          data-es="Según la luz, el cañón puede pasar entre tonos naranja intenso, dorado, rojo suave y violeta, dándole a cada visita una atmósfera distinta.">
+          Depending on the light, the canyon can move between deep orange, gold, soft red, and violet tones, giving every visit a different mood.
+        </p>
+
+        <p
+          data-en="It is not just a stop — it is a place to admire, photograph, feel, and remember."
+          data-es="No es solo una parada — es un lugar para admirar, fotografiar, sentir y recordar.">
+          It is not just a stop — it is a place to admire, photograph, feel, and remember.
+        </p>
+
+        <div class="highlight-grid">
+          <div class="highlight" data-en="Epic Photos" data-es="Fotos Épicas">Epic Photos</div>
+          <div class="highlight" data-en="Natural Beauty" data-es="Belleza Natural">Natural Beauty</div>
+          <div class="highlight" data-en="Desert Adventure" data-es="Aventura del Desierto">Desert Adventure</div>
+          <div class="highlight" data-en="Golden Light" data-es="Luz Dorada">Golden Light</div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <img src="antelope-light.jpg" alt="Antelope Canyon light beams">
+        <div class="media-badge"
+             data-en="Premium desert atmosphere"
+             data-es="Atmósfera premium del desierto">
+          Premium desert atmosphere
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2 class="section-title"
+        data-en="Upper & Lower Antelope Canyon"
+        data-es="Upper y Lower Antelope Canyon">
+      Upper & Lower Antelope Canyon
+    </h2>
+
+    <p class="section-subtitle"
+       data-en="Both sections are spectacular, but each one offers a different feeling and rhythm."
+       data-es="Las dos secciones son espectaculares, pero cada una ofrece una sensación y un ritmo diferente.">
+      Both sections are spectacular, but each one offers a different feeling and rhythm.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="upper-antelope.jpg" alt="Upper Antelope Canyon">
+        <div class="card-content">
+          <h3 data-en="Upper Antelope Canyon" data-es="Upper Antelope Canyon">Upper Antelope Canyon</h3>
+
+          <p
+            data-en="Known for its iconic light beams, smoother route, and dramatic sandstone walls. It feels more relaxed and is ideal for classic visual moments."
+            data-es="Conocido por sus rayos de luz icónicos, su recorrido más cómodo y sus impresionantes paredes de arenisca. Se siente más relajado y es ideal para momentos visuales clásicos.">
+            Known for its iconic light beams, smoother route, and dramatic sandstone walls. It feels more relaxed and is ideal for classic visual moments.
+          </p>
+
+          <div class="tags">
+            <span class="tag" data-en="Easy Access" data-es="Acceso Fácil">Easy Access</span>
+            <span class="tag" data-en="Light Beams" data-es="Rayos de Luz">Light Beams</span>
+            <span class="tag" data-en="Famous Photos" data-es="Fotos Famosas">Famous Photos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="lower-antelope.jpg" alt="Lower Antelope Canyon">
+        <div class="card-content">
+          <h3 data-en="Lower Antelope Canyon" data-es="Lower Antelope Canyon">Lower Antelope Canyon</h3>
+
+          <p
+            data-en="More dynamic and adventurous, with tighter passages, stairs, and a deeper canyon feel for travelers who want something more intense."
+            data-es="Más dinámico y aventurero, con pasos más estrechos, escaleras y una sensación más profunda del cañón para viajeros que quieren algo más intenso.">
+            More dynamic and adventurous, with tighter passages, stairs, and a deeper canyon feel for travelers who want something more intense.
+          </p>
+
+          <div class="tags">
+            <span class="tag" data-en="Adventure" data-es="Aventura">Adventure</span>
+            <span class="tag" data-en="Stairs" data-es="Escaleras">Stairs</span>
+            <span class="tag" data-en="Unique Angles" data-es="Ángulos Únicos">Unique Angles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="gallery">
+    <h2 class="section-title"
+        data-en="Interactive Gallery"
+        data-es="Galería Interactiva">
+      Interactive Gallery
+    </h2>
+
+    <p class="section-subtitle"
+       data-en="Tap any image to open it larger. You can also filter the gallery to make the page feel more alive and premium."
+       data-es="Toca cualquier imagen para verla más grande. También puedes filtrar la galería para que la página se sienta más viva y premium.">
+      Tap any image to open it larger. You can also filter the gallery to make the page feel more alive and premium.
+    </p>
+
+    <div class="gallery-controls">
+      <button class="filter-btn active" data-filter="all"
+              data-en="All"
+              data-es="Todas">All</button>
+      <button class="filter-btn" data-filter="upper"
+              data-en="Upper"
+              data-es="Upper">Upper</button>
+      <button class="filter-btn" data-filter="lower"
+              data-en="Lower"
+              data-es="Lower">Lower</button>
+      <button class="filter-btn" data-filter="light"
+              data-en="Light Beams"
+              data-es="Rayos de Luz">Light Beams</button>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item" data-category="light">
+        <img src="antelope-hero.jpg" alt="Antelope Canyon hero view">
+      </div>
+
+      <div class="gallery-item" data-category="upper">
+        <img src="upper-antelope.jpg" alt="Upper Antelope Canyon curves">
+      </div>
+
+      <div class="gallery-item" data-category="lower">
+        <img src="lower-antelope.jpg" alt="Lower Antelope Canyon textures">
+      </div>
+
+      <div class="gallery-item" data-category="light">
+        <img src="antelope-light.jpg" alt="Light inside Antelope Canyon">
+      </div>
+
+      <div class="gallery-item" data-category="upper">
+        <img src="upper-antelope-2.jpg" alt="Upper Antelope Canyon view">
+      </div>
+
+      <div class="gallery-item" data-category="lower">
+        <img src="lower-antelope-2.jpg" alt="Lower Antelope Canyon details">
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="milemundo">
+    <h2 class="section-title"
+        data-en="Why Experience It with Milemundo"
+        data-es="Por Qué Vivirlo con Milemundo">
+      Why Experience It with Milemundo
+    </h2>
+
+    <p class="section-subtitle"
+       data-en="Milemundo is not just about getting you there. It is about making the full day feel smooth, memorable, visual, and personal."
+       data-es="Milemundo no se trata solo de llevarte allí. Se trata de hacer que el día completo se sienta fluido, memorable, visual y personal.">
+      Milemundo is not just about getting you there. It is about making the full day feel smooth, memorable, visual, and personal.
+    </p>
+
+    <div class="milemundo-grid">
+      <div class="box">
+        <h3
+          data-en="Milemundo Makes It Different"
+          data-es="Milemundo Lo Hace Diferente">
+          Milemundo Makes It Different
+        </h3>
+
+        <p
+          data-en="Instead of a rushed stop, the day can be shaped around the mood of the trip: scenic moments, comfortable pacing, visual memories, and a more personal feeling."
+          data-es="En lugar de una parada apresurada, el día puede organizarse según el ritmo del viaje: momentos panorámicos, un paso cómodo, recuerdos visuales y una sensación más personal.">
+          Instead of a rushed stop, the day can be shaped around the mood of the trip: scenic moments, comfortable pacing, visual memories, and a more personal feeling.
+        </p>
+
+        <p
+          data-en="The goal is not only the destination. It is also the atmosphere, the ride, the photo stops, and the full experience around it."
+          data-es="La meta no es solo el destino. También es el ambiente, el trayecto, las paradas para fotos y la experiencia completa alrededor de todo eso.">
+          The goal is not only the destination. It is also the atmosphere, the ride, the photo stops, and the full experience around it.
+        </p>
+
+        <p
+          data-en="That is what gives the page and the trip a more premium identity."
+          data-es="Eso es lo que le da a la página y al viaje una identidad más premium.">
+          That is what gives the page and the trip a more premium identity.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3
+          data-en="What Milemundo Offers"
+          data-es="Lo Que Ofrece Milemundo">
+          What Milemundo Offers
+        </h3>
+
+        <div class="benefits">
+          <div class="benefit" data-en="Custom Experiences" data-es="Experiencias Personalizadas">Custom Experiences</div>
+          <div class="benefit" data-en="Beautiful Photo Stops" data-es="Paradas para Fotos">Beautiful Photo Stops</div>
+          <div class="benefit" data-en="Relaxed Timing" data-es="Sin Apuro">Relaxed Timing</div>
+          <div class="benefit" data-en="Guided Planning" data-es="Planificación Guiada">Guided Planning</div>
+          <div class="benefit" data-en="Scenic Routes" data-es="Rutas Panorámicas">Scenic Routes</div>
+          <div class="benefit" data-en="Comfort & Style" data-es="Comodidad y Estilo">Comfort & Style</div>
+          <div class="benefit" data-en="Flexible Adventures" data-es="Aventuras Flexibles">Flexible Adventures</div>
+          <div class="benefit" data-en="Memorable Day Trips" data-es="Experiencias Memorables">Memorable Day Trips</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="faq">
+    <h2 class="section-title"
+        data-en="Frequently Asked Questions"
+        data-es="Preguntas Frecuentes">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-en="What makes this page more interactive?" data-es="¿Qué hace esta página más interactiva?">What makes this page more interactive?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-en="It includes live language switching, animated reveal effects, gallery filters, image lightbox viewing, hover effects, and expandable FAQ sections."
+             data-es="Incluye cambio de idioma en vivo, animaciones al hacer scroll, filtros de galería, vista ampliada de imágenes, efectos hover y preguntas desplegables.">
+            It includes live language switching, animated reveal effects, gallery filters, image lightbox viewing, hover effects, and expandable FAQ sections.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-en="Can I replace the gallery photos later?" data-es="¿Puedo reemplazar después las fotos de la galería?">Can I replace the gallery photos later?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-en="Yes. Just keep the same file names or replace the image paths in the gallery section."
+             data-es="Sí. Solo mantén los mismos nombres de archivo o reemplaza las rutas de las imágenes en la sección de galería.">
+            Yes. Just keep the same file names or replace the image paths in the gallery section.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span data-en="Is this page bilingual on all sections?" data-es="¿Esta página es bilingüe en todas las secciones?">Is this page bilingual on all sections?</span>
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-en="Yes. The title, buttons, navigation, section headings, descriptions, gallery filters, and FAQ content all switch between English and Spanish."
+             data-es="Sí. El título, los botones, la navegación, los encabezados, las descripciones, los filtros de galería y el contenido del FAQ cambian entre inglés y español.">
+            Yes. The title, buttons, navigation, section headings, descriptions, gallery filters, and FAQ content all switch between English and Spanish.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <div class="cta-box">
+      <h2
+        data-en="Book the Experience"
+        data-es="Reserva la Experiencia">
+        Book the Experience
+      </h2>
+
+      <p
+        data-en="Antelope Canyon is already unforgettable. With Milemundo, it can feel even more complete, visual, comfortable, and personal."
+        data-es="Antelope Canyon ya es inolvidable. Con Milemundo, puede sentirse todavía más completo, visual, cómodo y personal.">
+        Antelope Canyon is already unforgettable. With Milemundo, it can feel even more complete, visual, comfortable, and personal.
+      </p>
+
+      <a href="#" class="btn btn-primary"
+         data-en="Book Now"
+         data-es="Reservar Ahora">
+        Book Now
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span
+      data-en="© 2026 Milemundo | Antelope Canyon Experience"
+      data-es="© 2026 Milemundo | Experiencia Antelope Canyon">
+      © 2026 Milemundo | Antelope Canyon Experience
+    </span>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">×</button>
+      <img src="" alt="Expanded gallery image" id="lightboxImg">
+    </div>
+  </div>
+
+  <script>
+    function setLanguage(lang, btn){
+      const elements = document.querySelectorAll('[data-en]');
+      elements.forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if(text){
+          el.textContent = text;
+        }
+      });
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('.lang-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+
+      btn.classList.add('active');
+      localStorage.setItem('milemundo_lang', lang);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('milemundo_lang') || 'en';
+      const buttons = document.querySelectorAll('.lang-btn');
+
+      if(savedLang === 'es'){
+        setLanguage('es', buttons[1]);
+      } else {
+        setLanguage('en', buttons[0]);
+      }
+
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          const filter = button.dataset.filter;
+
+          galleryItems.forEach(item => {
+            if(filter === 'all' || item.dataset.category === filter){
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+        });
+      });
+
+      lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('open');
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox){
+          lightbox.classList.remove('open');
+        }
+      });
+
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+
+          faqItems.forEach(faq => {
+            faq.classList.remove('active');
+            faq.querySelector('.faq-answer').style.maxHeight = null;
+          });
+
+          if(!isActive){
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
