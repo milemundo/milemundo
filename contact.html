@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Milemundo</title>
+  <meta name="description" content="Contact Milemundo for private tours, custom trips, Grand Canyon adventures, Hoover Dam visits, Las Vegas experiences, and personalized travel services." />
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,164,92,0.10), transparent 30%),
+        linear-gradient(180deg,#2f3b2f 0%, #3f4a2c 45%, #342618 100%);
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    :root{
+      --olive-dark:#2f3b2f;
+      --olive:#3f4a2c;
+      --olive-soft:#55643a;
+      --brown:#3a2718;
+      --brown-soft:#5a3c24;
+      --gold:#c9a45c;
+      --gold-soft:#e7c98f;
+      --cream:#f5f1e8;
+      --card:rgba(255,255,255,0.06);
+      --border:rgba(255,255,255,0.10);
+      --shadow:0 10px 30px rgba(0,0,0,0.30);
+      --radius:24px;
+    }
+
+    .back-arrow{
+      position:fixed;
+      top:15px;
+      left:15px;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--brown),var(--olive-soft));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      z-index:9999;
+      box-shadow:var(--shadow);
+      transition:transform .2s ease;
+    }
+
+    .back-arrow:hover{
+      transform:scale(1.05);
+    }
+
+    .lang-switch{
+      position:fixed;
+      top:15px;
+      right:15px;
+      display:flex;
+      gap:8px;
+      z-index:9999;
+    }
+
+    .lang-btn{
+      border:none;
+      background:linear-gradient(135deg,var(--brown),var(--olive-soft));
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      transition:all .2s ease;
+    }
+
+    .lang-btn.active{
+      background:linear-gradient(135deg,var(--gold),#b88743);
+      color:#2c1b0d;
+    }
+
+    .hero{
+      min-height:55vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 20px 70px;
+      background:
+        linear-gradient(rgba(41,30,20,0.45), rgba(41,30,20,0.60)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+
+    .hero-box{
+      max-width:900px;
+      background:rgba(34,26,18,0.38);
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(231,201,143,0.20);
+      border-radius:28px;
+      padding:38px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-badge{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      background:rgba(201,164,92,0.15);
+      border:1px solid rgba(231,201,143,0.25);
+      color:var(--gold-soft);
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .hero h1{
+      font-size:clamp(2.2rem,5vw,4rem);
+      margin-bottom:14px;
+      color:#fff;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:auto;
+      color:#f2e7d4;
+      font-size:1.05rem;
+    }
+
+    .section{
+      max-width:1200px;
+      margin:auto;
+      padding:80px 20px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h2{
+      color:var(--gold);
+      font-size:1.9rem;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      color:#f4ede2;
+      margin-bottom:18px;
+    }
+
+    .contact-info{
+      display:grid;
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .info-item{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .info-item h3{
+      color:var(--gold);
+      margin-bottom:6px;
+      font-size:1.05rem;
+    }
+
+    .info-item p,
+    .info-item a{
+      color:#f5f1e8;
+      word-break:break-word;
+    }
+
+    form{
+      display:grid;
+      gap:16px;
+      margin-top:10px;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:7px;
+      color:var(--gold-soft);
+      font-size:.95rem;
+      font-weight:700;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:14px 15px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.07);
+      color:#fff;
+      font-size:15px;
+      outline:none;
+      transition:border-color .2s ease, background .2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color:#d7ccbc;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:rgba(231,201,143,0.55);
+      background:rgba(255,255,255,0.10);
+    }
+
+    textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .btn-submit{
+      border:none;
+      padding:15px 22px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--gold),#b88743);
+      color:#2c1b0d;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      transition:transform .2s ease, box-shadow .2s ease;
+      width:100%;
+    }
+
+    .btn-submit:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    .quick-links{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .quick-box{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:22px 18px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .quick-box h3{
+      color:var(--gold);
+      margin-bottom:8px;
+      font-size:1.1rem;
+    }
+
+    .quick-box p{
+      color:#f2eadf;
+      font-size:.95rem;
+      margin-bottom:12px;
+    }
+
+    .quick-box a{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.10);
+      color:#fff;
+      font-weight:700;
+      font-size:.92rem;
+    }
+
+    footer{
+      text-align:center;
+      padding:28px 20px;
+      background:#2b1f15;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#eadfce;
+    }
+
+    .lang{
+      display:none;
+    }
+
+    .lang.active{
+      display:block;
+    }
+
+    @media (max-width: 980px){
+      .contact-grid,
+      .quick-links,
+      .form-row{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 600px){
+      .hero{
+        padding:115px 16px 60px;
+      }
+
+      .hero-box,
+      .card{
+        padding:24px 18px;
+      }
+
+      .section{
+        padding:65px 16px;
+      }
+
+      .back-arrow{
+        width:42px;
+        height:42px;
+      }
+
+      .lang-btn{
+        padding:9px 12px;
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-arrow">←</a>
+
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+    <button class="lang-btn" onclick="setLanguage('es', this)">ES</button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-box">
+      <div class="hero-badge lang active" data-lang="en">Private Tours & Personalized Travel</div>
+      <div class="hero-badge lang" data-lang="es">Tours Privados y Viajes Personalizados</div>
+
+      <h1 class="lang active" data-lang="en">Contact Milemundo</h1>
+      <h1 class="lang" data-lang="es">Contacto Milemundo</h1>
+
+      <p class="lang active" data-lang="en">
+        Reach out to plan your next adventure. We help with private tours, custom trips, Grand Canyon experiences, Hoover Dam visits, hotel transportation, and more.
+      </p>
+      <p class="lang" data-lang="es">
+        Contáctanos para planificar tu próxima aventura. Te ayudamos con tours privados, viajes personalizados, experiencias al Gran Cañón, visitas a Hoover Dam, transporte a hoteles y más.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="contact-grid">
+      <div class="card">
+        <h2 class="lang active" data-lang="en">Get In Touch</h2>
+        <h2 class="lang" data-lang="es">Ponte En Contacto</h2>
+
+        <p class="lang active" data-lang="en">
+          Tell us what kind of trip you are looking for and we will help you create a comfortable, memorable, and personalized experience.
+        </p>
+        <p class="lang" data-lang="es">
+          Cuéntanos qué tipo de viaje estás buscando y te ayudaremos a crear una experiencia cómoda, memorable y personalizada.
+        </p>
+
+        <form>
+          <div class="form-row">
+            <div>
+              <label class="lang active" data-lang="en">Full Name</label>
+              <label class="lang" data-lang="es">Nombre Completo</label>
+              <input type="text" placeholder="Your name / Tu nombre">
+            </div>
+
+            <div>
+              <label class="lang active" data-lang="en">Phone Number</label>
+              <label class="lang" data-lang="es">Número De Teléfono</label>
+              <input type="tel" placeholder="+1 702 000 0000">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label class="lang active" data-lang="en">Email Address</label>
+              <label class="lang" data-lang="es">Correo Electrónico</label>
+              <input type="email" placeholder="you@example.com">
+            </div>
+
+            <div>
+              <label class="lang active" data-lang="en">Service</label>
+              <label class="lang" data-lang="es">Servicio</label>
+              <select>
+                <option>Grand Canyon Tour</option>
+                <option>Hoover Dam Tour</option>
+                <option>Las Vegas Custom Tour</option>
+                <option>Hotel Transportation</option>
+                <option>Personalized Trip</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="lang active" data-lang="en">Message</label>
+            <label class="lang" data-lang="es">Mensaje</label>
+            <textarea placeholder="Tell us what you need / Cuéntanos qué necesitas"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit lang active" data-lang="en">Send Message</button>
+          <button type="submit" class="btn-submit lang" data-lang="es">Enviar Mensaje</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="lang active" data-lang="en">Contact Information</h2>
+        <h2 class="lang" data-lang="es">Información De Contacto</h2>
+
+        <p class="lang active" data-lang="en">
+          You can contact us directly for questions, bookings, custom routes, or personalized travel experiences.
+        </p>
+        <p class="lang" data-lang="es">
+          Puedes contactarnos directamente para preguntas, reservas, rutas personalizadas o experiencias de viaje a medida.
+        </p>
+
+        <div class="contact-info">
+          <div class="info-item">
+            <h3 class="lang active" data-lang="en">Phone / WhatsApp</h3>
+            <h3 class="lang" data-lang="es">Teléfono / WhatsApp</h3>
+            <p>+1 (702) 000-0000</p>
+          </div>
+
+          <div class="info-item">
+            <h3 class="lang active" data-lang="en">Email</h3>
+            <h3 class="lang" data-lang="es">Correo</h3>
+            <a href="mailto:info@milemundo.com">info@milemundo.com</a>
+          </div>
+
+          <div class="info-item">
+            <h3 class="lang active" data-lang="en">Location</h3>
+            <h3 class="lang" data-lang="es">Ubicación</h3>
+            <p class="lang active" data-lang="en">Las Vegas, Nevada</p>
+            <p class="lang" data-lang="es">Las Vegas, Nevada</p>
+          </div>
+
+          <div class="info-item">
+            <h3 class="lang active" data-lang="en">Hours</h3>
+            <h3 class="lang" data-lang="es">Horario</h3>
+            <p class="lang active" data-lang="en">Available daily for reservations and inquiries</p>
+            <p class="lang" data-lang="es">Disponible todos los días para reservas y consultas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <div class="quick-box">
+        <h3 class="lang active" data-lang="en">Grand Canyon</h3>
+        <h3 class="lang" data-lang="es">Gran Cañón</h3>
+        <p class="lang active" data-lang="en">Ask about private scenic tours and custom travel options.</p>
+        <p class="lang" data-lang="es">Pregunta por tours privados escénicos y opciones de viaje personalizadas.</p>
+        <a href="grand-canyon.html" class="lang active" data-lang="en">View Tour</a>
+        <a href="grand-canyon.html" class="lang" data-lang="es">Ver Tour</a>
+      </div>
+
+      <div class="quick-box">
+        <h3 class="lang active" data-lang="en">Hoover Dam</h3>
+        <h3 class="lang" data-lang="es">Hoover Dam</h3>
+        <p class="lang active" data-lang="en">Explore one of the most iconic sites near Las Vegas.</p>
+        <p class="lang" data-lang="es">Explora uno de los lugares más icónicos cerca de Las Vegas.</p>
+        <a href="hoover-dam.html" class="lang active" data-lang="en">View Tour</a>
+        <a href="hoover-dam.html" class="lang" data-lang="es">Ver Tour</a>
+      </div>
+
+      <div class="quick-box">
+        <h3 class="lang active" data-lang="en">Custom Trips</h3>
+        <h3 class="lang" data-lang="es">Viajes Personalizados</h3>
+        <p class="lang active" data-lang="en">Create a route designed around your time, style and interests.</p>
+        <p class="lang" data-lang="es">Crea una ruta diseñada según tu tiempo, estilo e intereses.</p>
+        <a href="index.html" class="lang active" data-lang="en">Go Home</a>
+        <a href="index.html" class="lang" data-lang="es">Ir Al Inicio</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="lang active" data-lang="en">© 2026 Milemundo. All rights reserved.</p>
+    <p class="lang" data-lang="es">© 2026 Milemundo. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function setLanguage(lang, btn){
+      document.querySelectorAll('.lang').forEach(el=>{
+        el.classList.remove('active');
+        if(el.getAttribute('data-lang') === lang){
+          el.classList.add('active');
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+
+      localStorage.setItem('milemundoLang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const savedLang = localStorage.getItem('milemundoLang') || 'en';
+      const targetBtn = document.querySelector(`.lang-btn[onclick*="'${savedLang}'"]`);
+      if(targetBtn){
+        setLanguage(savedLang, targetBtn);
+      }
+    });
+  </script>
+
+</body>
+</html>
