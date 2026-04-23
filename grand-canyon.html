@@ -1,1 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Canyon Tour | Milemundo</title>
+  <meta name="description" content="Discover the Grand Canyon with Milemundo. Private bilingual tours from Las Vegas with comfort, scenic stops, personalized service, snacks, cold drinks, and unforgettable views." />
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(216,179,106,0.10), transparent 28%),
+        linear-gradient(180deg,#364125 0%, #3f4a2c 40%, #342618 100%);
+      color:#f5f1e8;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    :root{
+      --olive:#3f4a2c;
+      --olive-soft:#55643a;
+      --olive-light:#7d9461;
+      --brown:#3a2718;
+      --brown-soft:#5a3c24;
+      --gold:#d8b36a;
+      --gold-soft:#f0d29a;
+      --cream:#f5f1e8;
+      --shadow:0 10px 30px rgba(0,0,0,0.30);
+      --radius:22px;
+    }
+
+    .back-arrow{
+      position:fixed;
+      top:15px;
+      left:15px;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--brown),var(--olive-soft));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      z-index:9999;
+      box-shadow:var(--shadow);
+      transition:transform .2s ease, opacity .2s ease;
+    }
+
+    .back-arrow:hover{
+      transform:scale(1.05);
+      opacity:.92;
+    }
+
+    .lang-switch{
+      position:fixed;
+      top:15px;
+      right:15px;
+      display:flex;
+      gap:8px;
+      z-index:9999;
+    }
+
+    .lang-btn{
+      border:none;
+      background:linear-gradient(135deg,var(--brown),var(--olive-soft));
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      transition:all .2s ease;
+    }
+
+    .lang-btn.active{
+      background:linear-gradient(135deg,var(--gold),#b88743);
+      color:#2b1b0e;
+    }
+
+    .lang-btn:hover{
+      transform:translateY(-1px);
+    }
+
+    header{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(40,30,18,.45), rgba(40,30,18,.60)),
+        url('https://images.unsplash.com/photo-1615551043360-33de8b5f410c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 20px 70px;
+      position:relative;
+    }
+
+    .hero-box{
+      max-width:900px;
+      background:rgba(34,26,18,0.38);
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(240,210,154,0.22);
+      border-radius:28px;
+      padding:38px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:rgba(216,179,106,0.18);
+      border:1px solid rgba(240,210,154,0.30);
+      color:var(--gold-soft);
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:13px;
+      letter-spacing:.5px;
+      margin-bottom:18px;
+    }
+
+    header h1{
+      font-size:clamp(2.3rem,5vw,4.3rem);
+      color:#fff;
+      margin-bottom:14px;
+      line-height:1.08;
+      text-shadow:0 3px 10px rgba(0,0,0,0.35);
+    }
+
+    .hero-subtitle{
+      font-size:clamp(1rem,2.2vw,1.25rem);
+      color:#f5e8d2;
+      max-width:760px;
+      margin:0 auto 24px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .hero-buttons a{
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:700;
+      transition:all .25s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),#b88743);
+      color:#2c1b0d;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    .section{
+      max-width:1200px;
+      margin:auto;
+      padding:80px 20px;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:16px;
+      color:var(--gold);
+      font-size:clamp(1.8rem,3vw,2.8rem);
+    }
+
+    .section-text{
+      max-width:900px;
+      margin:0 auto 45px;
+      text-align:center;
+      color:#f3eadb;
+      font-size:1.05rem;
+    }
+
+    .overview-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
+      align-items:center;
+    }
+
+    .overview-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .overview-card h3{
+      color:var(--gold);
+      margin-bottom:14px;
+      font-size:1.5rem;
+    }
+
+    .overview-card p{
+      color:#f6f0e7;
+      margin-bottom:14px;
+    }
+
+    .overview-image{
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:420px;
+    }
+
+    .overview-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:15px;
+    }
+
+    .feature-box{
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:26px 20px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .feature-box .icon{
+      font-size:2rem;
+      margin-bottom:12px;
+    }
+
+    .feature-box h4{
+      color:var(--gold);
+      margin-bottom:10px;
+      font-size:1.2rem;
+    }
+
+    .feature-box p{
+      color:#f3eadb;
+      font-size:.97rem;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .info-wrap{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      margin-top:22px;
+    }
+
+    .info-card{
+      background:rgba(44,31,20,0.58);
+      border:1px solid rgba(240,210,154,0.14);
+      border-radius:22px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h3{
+      color:var(--gold);
+      margin-bottom:14px;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+
+    .info-card li{
+      color:#f5f1e8;
+      padding-left:18px;
+      position:relative;
+    }
+
+    .info-card li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--gold);
+    }
+
+    .cta-box{
+      text-align:center;
+      background:
+        linear-gradient(180deg, rgba(216,179,106,0.10), rgba(58,39,24,0.35));
+      border:1px solid rgba(240,210,154,0.18);
+      border-radius:28px;
+      padding:45px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-box h2{
+      color:var(--gold);
+      margin-bottom:14px;
+      font-size:clamp(1.8rem,3vw,2.8rem);
+    }
+
+    .cta-box p{
+      max-width:800px;
+      margin:0 auto 22px;
+      color:#f7efe3;
+    }
+
+    footer{
+      background:#2f2115;
+      padding:28px 20px;
+      text-align:center;
+      color:#eadfce;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .lang{
+      display:none;
+    }
+
+    .lang.active{
+      display:block;
+    }
+
+    @media (max-width: 980px){
+      .overview-grid,
+      .features,
+      .gallery,
+      .info-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .overview-image{
+        min-height:320px;
+      }
+
+      .gallery img{
+        height:240px;
+      }
+    }
+
+    @media (max-width: 600px){
+      header{
+        padding:115px 16px 60px;
+        min-height:92vh;
+      }
+
+      .hero-box{
+        padding:30px 18px;
+      }
+
+      .hero-buttons a{
+        width:100%;
+        text-align:center;
+      }
+
+      .section{
+        padding:65px 16px;
+      }
+
+      .feature-box,
+      .overview-card,
+      .info-card{
+        padding:22px 18px;
+      }
+
+      .gallery img{
+        height:210px;
+      }
+
+      .back-arrow{
+        width:42px;
+        height:42px;
+        font-size:22px;
+      }
+
+      .lang-btn{
+        padding:9px 12px;
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-arrow">←</a>
+
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLanguage('en', this)">EN</button>
+    <button class="lang-btn" onclick="setLanguage('es', this)">ES</button>
+  </div>
+
+  <header>
+    <div class="hero-box">
+      <div class="hero-badge lang active" data-lang="en">Private Tour Experience</div>
+      <div class="hero-badge lang" data-lang="es">Experiencia de Tour Privado</div>
+
+      <h1 class="lang active" data-lang="en">Grand Canyon Tour</h1>
+      <h1 class="lang" data-lang="es">Tour al Gran Cañón</h1>
+
+      <p class="hero-subtitle lang active" data-lang="en">
+        Explore one of the most breathtaking wonders in the world with Milemundo. A private, comfortable and personalized journey from Las Vegas with scenic stops, cold drinks, snacks and unforgettable moments.
+      </p>
+
+      <p class="hero-subtitle lang" data-lang="es">
+        Explora una de las maravillas más impresionantes del mundo con Milemundo. Un viaje privado, cómodo y personalizado desde Las Vegas con paradas escénicas, bebidas frías, snacks y momentos inolvidables.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#booking" class="btn-primary lang active" data-lang="en">Book This Tour</a>
+        <a href="#booking" class="btn-primary lang" data-lang="es">Reservar Este Tour</a>
+
+        <a href="#experience" class="btn-secondary lang active" data-lang="en">See The Experience</a>
+        <a href="#experience" class="btn-secondary lang" data-lang="es">Ver La Experiencia</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="experience">
+    <h2 class="section-title lang active" data-lang="en">A Journey Beyond The Ordinary</h2>
+    <h2 class="section-title lang" data-lang="es">Un Viaje Más Allá De Lo Común</h2>
+
+    <p class="section-text lang active" data-lang="en">
+      This is not just transportation. Milemundo offers a relaxed and carefully designed experience for travelers who want to enjoy the Grand Canyon at their own pace, without feeling rushed, with personal attention from start to finish.
+    </p>
+
+    <p class="section-text lang" data-lang="es">
+      Esto no es solo transporte. Milemundo ofrece una experiencia relajada y cuidadosamente diseñada para viajeros que quieren disfrutar el Gran Cañón a su propio ritmo, sin sentirse apurados, con atención personal de principio a fin.
+    </p>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3 class="lang active" data-lang="en">What Milemundo Offers</h3>
+        <h3 class="lang" data-lang="es">Lo Que Ofrece Milemundo</h3>
+
+        <p class="lang active" data-lang="en">
+          Our Grand Canyon tours are designed for people who want something more personal than a crowded group bus. We offer customized trips from Las Vegas with comfort, flexibility and a more human experience.
+        </p>
+        <p class="lang" data-lang="es">
+          Nuestros tours al Gran Cañón están diseñados para personas que quieren algo más personal que un autobús turístico lleno. Ofrecemos viajes personalizados desde Las Vegas con comodidad, flexibilidad y una experiencia más humana.
+        </p>
+
+        <p class="lang active" data-lang="en">
+          You can enjoy scenic photo stops, cold drinks during the ride, snacks for the road, a smooth and relaxed atmosphere, and time to truly appreciate the landscapes. We focus on quality over rushing. That means more comfort, better memories, and a trip built around your experience.
+        </p>
+        <p class="lang" data-lang="es">
+          Puedes disfrutar paradas escénicas para fotos, bebidas frías durante el camino, snacks para el viaje, un ambiente tranquilo y relajado, y tiempo para apreciar de verdad los paisajes. Nos enfocamos en la calidad, no en ir con apuro. Eso significa más comodidad, mejores recuerdos y un viaje pensado alrededor de tu experiencia.
+        </p>
+
+        <p class="lang active" data-lang="en">
+          Whether you want a romantic escape, a family adventure, a private sightseeing day, or a custom route with courtesy stops along the way, Milemundo helps make the journey feel special from pickup to return.
+        </p>
+        <p class="lang" data-lang="es">
+          Ya sea que quieras una escapada romántica, una aventura familiar, un día privado de turismo o una ruta personalizada con paradas de cortesía en el camino, Milemundo ayuda a que el viaje se sienta especial desde la recogida hasta el regreso.
+        </p>
+      </div>
+
+      <div class="overview-image">
+        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1400&q=80" alt="Grand Canyon scenic view" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title lang active" data-lang="en">Why Travelers Love It</h2>
+    <h2 class="section-title lang" data-lang="es">Por Qué A Los Viajeros Les Encanta</h2>
+
+    <div class="features">
+      <div class="feature-box">
+        <div class="icon">🚘</div>
+        <h4 class="lang active" data-lang="en">Private & Comfortable</h4>
+        <h4 class="lang" data-lang="es">Privado y Cómodo</h4>
+        <p class="lang active" data-lang="en">A more relaxed experience with personalized attention instead of a crowded tour feeling.</p>
+        <p class="lang" data-lang="es">Una experiencia más relajada con atención personalizada en vez de sentirte en un tour lleno de gente.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">📸</div>
+        <h4 class="lang active" data-lang="en">Beautiful Photo Stops</h4>
+        <h4 class="lang" data-lang="es">Paradas Hermosas Para Fotos</h4>
+        <p class="lang active" data-lang="en">Enjoy scenic viewpoints and courtesy stops so you can capture unforgettable moments.</p>
+        <p class="lang" data-lang="es">Disfruta miradores escénicos y paradas de cortesía para capturar momentos inolvidables.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">🥤</div>
+        <h4 class="lang active" data-lang="en">Snacks & Cold Drinks</h4>
+        <h4 class="lang" data-lang="es">Snacks y Bebidas Frías</h4>
+        <p class="lang active" data-lang="en">Travel more comfortably with refreshing drinks and light snacks during the journey.</p>
+        <p class="lang" data-lang="es">Viaja con más comodidad con bebidas refrescantes y snacks ligeros durante el trayecto.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">🗺️</div>
+        <h4 class="lang active" data-lang="en">Customized Experience</h4>
+        <h4 class="lang" data-lang="es">Experiencia Personalizada</h4>
+        <p class="lang active" data-lang="en">Trips can be adapted for couples, families, friends, and travelers looking for something unique.</p>
+        <p class="lang" data-lang="es">Los viajes pueden adaptarse para parejas, familias, amigos y viajeros que buscan algo único.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">⏳</div>
+        <h4 class="lang active" data-lang="en">No Rush</h4>
+        <h4 class="lang" data-lang="es">Sin Apuro</h4>
+        <p class="lang active" data-lang="en">We value the experience, giving you time to enjoy the views instead of making everything feel rushed.</p>
+        <p class="lang" data-lang="es">Valoramos la experiencia, dándote tiempo para disfrutar las vistas en vez de hacer todo con prisa.</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon">✨</div>
+        <h4 class="lang active" data-lang="en">Memorable From Start To Finish</h4>
+        <h4 class="lang" data-lang="es">Memorable De Principio A Fin</h4>
+        <p class="lang active" data-lang="en">From pickup to return, the goal is to make the entire day smooth, beautiful and unforgettable.</p>
+        <p class="lang" data-lang="es">Desde la recogida hasta el regreso, la meta es que todo el día sea fluido, hermoso e inolvidable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title lang active" data-lang="en">Grand Canyon Moments</h2>
+    <h2 class="section-title lang" data-lang="es">Momentos En El Gran Cañón</h2>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=80" alt="Grand Canyon landscape 1">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Grand Canyon landscape 2">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80" alt="Grand Canyon landscape 3">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title lang active" data-lang="en">Tour Information</h2>
+    <h2 class="section-title lang" data-lang="es">Información Del Tour</h2>
+
+    <div class="info-wrap">
+      <div class="info-card">
+        <h3 class="lang active" data-lang="en">Included In The Experience</h3>
+        <h3 class="lang" data-lang="es">Incluido En La Experiencia</h3>
+
+        <ul class="lang active" data-lang="en">
+          <li>Private and comfortable transportation</li>
+          <li>Personalized travel experience</li>
+          <li>Scenic and courtesy photo stops</li>
+          <li>Cold drinks during the ride</li>
+          <li>Light snacks for the road</li>
+          <li>Flexible atmosphere with no rushed feeling</li>
+        </ul>
+
+        <ul class="lang" data-lang="es">
+          <li>Transporte privado y cómodo</li>
+          <li>Experiencia de viaje personalizada</li>
+          <li>Paradas escénicas y de cortesía para fotos</li>
+          <li>Bebidas frías durante el viaje</li>
+          <li>Snacks ligeros para el camino</li>
+          <li>Ambiente flexible sin sensación de apuro</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3 class="lang active" data-lang="en">Perfect For</h3>
+        <h3 class="lang" data-lang="es">Ideal Para</h3>
+
+        <ul class="lang active" data-lang="en">
+          <li>Couples looking for a romantic desert escape</li>
+          <li>Families wanting a comfortable sightseeing day</li>
+          <li>Friends exploring Arizona from Las Vegas</li>
+          <li>Visitors who prefer a private custom tour</li>
+          <li>Travelers who want to enjoy the scenery calmly</li>
+        </ul>
+
+        <ul class="lang" data-lang="es">
+          <li>Parejas que buscan una escapada romántica al desierto</li>
+          <li>Familias que quieren un día cómodo de turismo</li>
+          <li>Amigos explorando Arizona desde Las Vegas</li>
+          <li>Visitantes que prefieren un tour privado y personalizado</li>
+          <li>Viajeros que quieren disfrutar el paisaje con calma</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <div class="cta-box">
+      <h2 class="lang active" data-lang="en">Ready For Your Grand Canyon Adventure?</h2>
+      <h2 class="lang" data-lang="es">¿Listo Para Tu Aventura Al Gran Cañón?</h2>
+
+      <p class="lang active" data-lang="en">
+        Book your private Milemundo experience and enjoy a tour designed with comfort, flexibility and unforgettable views in mind.
+      </p>
+
+      <p class="lang" data-lang="es">
+        Reserva tu experiencia privada con Milemundo y disfruta un tour diseñado con comodidad, flexibilidad y vistas inolvidables.
+      </p>
+
+      <div class="hero-buttons" style="margin-top:18px;">
+        <a href="contact.html" class="btn-primary lang active" data-lang="en">Book Now</a>
+        <a href="contact.html" class="btn-primary lang" data-lang="es">Reservar Ahora</a>
+
+        <a href="index.html" class="btn-secondary lang active" data-lang="en">Back Home</a>
+        <a href="index.html" class="btn-secondary lang" data-lang="es">Volver Al Inicio</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="lang active" data-lang="en">© 2026 Milemundo. All rights reserved.</p>
+    <p class="lang" data-lang="es">© 2026 Milemundo. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function setLanguage(lang, btn){
+      document.querySelectorAll('.lang').forEach(el=>{
+        el.classList.remove('active');
+        if(el.getAttribute('data-lang') === lang){
+          el.classList.add('active');
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+
+      localStorage.setItem('milmundoLang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const savedLang = localStorage.getItem('milmundoLang') || 'en';
+      const targetBtn = document.querySelector(`.lang-btn[onclick*="'${savedLang}'"]`);
+      if(targetBtn){
+        setLanguage(savedLang, targetBtn);
+      }
+    });
+  </script>
+
+</body>
+</html>
